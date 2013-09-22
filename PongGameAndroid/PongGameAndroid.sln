@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PongGameAndroid", "PongGameAndroid.vcxproj", "{D78FCA0D-F536-4C51-8B70-6AB54AFFC197}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Android = Debug|Android
+		Debug|Androidx = Debug|Androidx
+		Release|Android = Release|Android
+		Release|Androidx = Release|Androidx
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D78FCA0D-F536-4C51-8B70-6AB54AFFC197}.Debug|Android.ActiveCfg = Debug|Android
+		{D78FCA0D-F536-4C51-8B70-6AB54AFFC197}.Debug|Android.Build.0 = Debug|Android
+		{D78FCA0D-F536-4C51-8B70-6AB54AFFC197}.Debug|Androidx.ActiveCfg = Debug|Android
+		{D78FCA0D-F536-4C51-8B70-6AB54AFFC197}.Release|Android.ActiveCfg = Release|Android
+		{D78FCA0D-F536-4C51-8B70-6AB54AFFC197}.Release|Android.Build.0 = Release|Android
+		{D78FCA0D-F536-4C51-8B70-6AB54AFFC197}.Release|Androidx.ActiveCfg = Release|Android
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

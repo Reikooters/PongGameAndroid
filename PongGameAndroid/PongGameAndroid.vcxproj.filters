@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="CppSource">
+      <UniqueIdentifier>{0d547cbc-d220-48c2-9125-1cfaa59b0202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CppSource\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="CppSource\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="CppSource\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="AndroidApk">
+      <UniqueIdentifier>{a215b99e-07a9-463d-9ee9-7322a7f55b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidApk\JavaSource">
+      <UniqueIdentifier>{e1813901-ab9b-404d-ad06-3187b52b05ef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidApk\project.properties">
+      <Filter>AndroidApk</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="AndroidApk\AndroidManifest.xml">
+      <Filter>AndroidApk</Filter>
+    </Xml>
+    <Xml Include="AndroidApk\build.xml">
+      <Filter>AndroidApk</Filter>
+    </Xml>
+    <Xml Include="AndroidApk\res\values\strings.xml">
+      <Filter>AndroidApk</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CppSource\source\main.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\source\Player.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\source\Application.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CppSource\header\Application.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\header\Player.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\header\Vector2.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
