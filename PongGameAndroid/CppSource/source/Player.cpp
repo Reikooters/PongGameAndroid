@@ -15,7 +15,13 @@ Player::Player()
 // Draws the player on the screen.
 void Player::draw()
 {
-	app->renderer->drawArray(verts, 6, 1.0f, 0.7f, 0.0f, 1.0f);
+	static float grey;
+    grey += 0.01f;
+    if (grey > 1.0f) {
+        grey = 0.0f;
+    }
+
+	app->renderer->drawArray(verts, 6, grey, 0.7f, 0.0f, 1.0f);
 }
 
 void Player::setPos(const float x, const float y)
@@ -52,4 +58,9 @@ void Player::recalcVerts()
 
 	verts[10] = y1;
 	verts[11] = x1;
+}
+
+Vector2 Player::getPos()
+{
+	return pos;
 }

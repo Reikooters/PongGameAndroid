@@ -15,4 +15,5 @@ public:
 	Player();
 	void draw();
 	void setPos(const float x, const float y);
+	Vector2 getPos();
 };

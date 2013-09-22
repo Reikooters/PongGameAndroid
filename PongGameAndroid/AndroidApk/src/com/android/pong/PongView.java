@@ -336,4 +336,23 @@ class PongView extends GLSurfaceView {
             // Do nothing.
         }
     }
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event)
+	{
+		int action = event.getAction();
+		switch(action & MotionEvent.ACTION_MASK)
+		{
+			case MotionEvent.ACTION_DOWN:
+			{
+				int id = event.getPointerId(0);
+				//handleMouseDown (id, event.getX(), event.getY(), event.getEventTime());
+				PongLib.mouseDown();
+				return true;
+			}
+			default: break;
+		}
+
+		return false;
+	}
 }

@@ -27,6 +27,15 @@
     <None Include="AndroidApk\project.properties">
       <Filter>AndroidApk</Filter>
     </None>
+    <None Include="AndroidApk\src\com\android\pong\PongActivity.java">
+      <Filter>AndroidApk\JavaSource</Filter>
+    </None>
+    <None Include="AndroidApk\src\com\android\pong\PongLib.java">
+      <Filter>AndroidApk\JavaSource</Filter>
+    </None>
+    <None Include="AndroidApk\src\com\android\pong\PongView.java">
+      <Filter>AndroidApk\JavaSource</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="AndroidApk\AndroidManifest.xml">

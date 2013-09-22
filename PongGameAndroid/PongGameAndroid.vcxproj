@@ -54,6 +54,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="AndroidApk\project.properties" />
+    <None Include="AndroidApk\src\com\android\pong\PongActivity.java" />
+    <None Include="AndroidApk\src\com\android\pong\PongLib.java" />
+    <None Include="AndroidApk\src\com\android\pong\PongView.java" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="AndroidApk\AndroidManifest.xml" />

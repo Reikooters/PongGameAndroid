@@ -12,4 +12,5 @@ public:
 	~Application();
 
 	void renderFrame();
+	void touched();
 };

@@ -70,3 +70,9 @@ void Application::renderFrame()
     checkGlError("glDrawArrays");
 	*/
 }
+
+void Application::touched()
+{
+	if (player)
+		player[0].setPos(0.61f, 0.5f);
+}
