@@ -13,4 +13,5 @@ public:
 
 	void renderFrame();
 	void touched();
+	void untouched();
 };

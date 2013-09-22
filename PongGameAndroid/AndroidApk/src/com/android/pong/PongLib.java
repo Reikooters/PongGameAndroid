@@ -30,5 +30,9 @@ public class PongLib {
      */
      public static native void init(int width, int height);
      public static native void step();
-	 public static native void mouseDown();
+	 
+	 // Touch functions
+	 public static native void addPointer(int pointerId, float x, float y);
+	 public static native void movePointer(int pointerId, float x, float y);
+	 public static native void removePointer(int pointerId);
 }

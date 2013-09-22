@@ -15,7 +15,10 @@ Application* app;
 extern "C" {
     JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject obj,  jint width, jint height);
     JNIEXPORT void JNICALL Java_com_android_pong_PongLib_step(JNIEnv * env, jobject obj);
-	JNIEXPORT void JNICALL Java_com_android_pong_PongLib_mouseDown(JNIEnv * env, jobject obj);
+
+	JNIEXPORT void JNICALL Java_com_android_pong_PongLib_addPointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y);
+	JNIEXPORT void JNICALL Java_com_android_pong_PongLib_movePointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y);
+	JNIEXPORT void JNICALL Java_com_android_pong_PongLib_removePointer(JNIEnv * env, jobject obj, jint pointerId);
 };
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject obj,  jint width, jint height)
@@ -28,7 +31,17 @@ JNIEXPORT void JNICALL Java_com_android_pong_PongLib_step(JNIEnv * env, jobject 
     app->renderFrame();
 }
 
-JNIEXPORT void JNICALL Java_com_android_pong_PongLib_mouseDown(JNIEnv * env, jobject obj)
+JNIEXPORT void JNICALL Java_com_android_pong_PongLib_addPointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y)
 {
-    app->touched();
+	app->touched();
+}
+
+JNIEXPORT void JNICALL Java_com_android_pong_PongLib_movePointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y)
+{
+
+}
+
+JNIEXPORT void JNICALL Java_com_android_pong_PongLib_removePointer(JNIEnv * env, jobject obj, jint pointerId)
+{
+	app->untouched();
 }

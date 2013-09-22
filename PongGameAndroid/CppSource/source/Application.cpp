@@ -76,3 +76,9 @@ void Application::touched()
 	if (player)
 		player[0].setPos(0.61f, 0.5f);
 }
+
+void Application::untouched()
+{
+	if (player)
+		player[0].setPos(0.61f, 0.0f);
+}

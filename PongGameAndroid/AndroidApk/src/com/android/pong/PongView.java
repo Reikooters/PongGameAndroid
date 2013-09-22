@@ -338,21 +338,49 @@ class PongView extends GLSurfaceView {
     }
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event)
-	{
-		int action = event.getAction();
-		switch(action & MotionEvent.ACTION_MASK)
-		{
-			case MotionEvent.ACTION_DOWN:
-			{
-				int id = event.getPointerId(0);
-				//handleMouseDown (id, event.getX(), event.getY(), event.getEventTime());
-				PongLib.mouseDown();
-				return true;
-			}
-			default: break;
-		}
+	public boolean onTouchEvent(MotionEvent event) {
+		
+		// get pointer index from the event object
+		int pointerIndex = event.getActionIndex();
 
-		return false;
+		// get pointer ID
+		int pointerId = event.getPointerId(pointerIndex);
+
+		// get masked (not specific to a pointer) action
+		int maskedAction = event.getActionMasked();
+
+		switch (maskedAction) {
+
+		case MotionEvent.ACTION_DOWN:
+		case MotionEvent.ACTION_POINTER_DOWN: {
+			// We have a new pointer. Lets add it to the list of pointers
+			PongLib.addPointer(pointerId, event.getX(pointerIndex), event.getY(pointerIndex));
+			break;
+		}
+		case MotionEvent.ACTION_MOVE: {
+			// a pointer was moved
+			/*
+			for (int size = event.getPointerCount(), i = 0; i < size; i++) {
+				PointF point = mActivePointers.get(event.getPointerId(i));
+				if (point != null) {
+					point.x = event.getX(i);
+					point.y = event.getY(i);
+				}
+			}
+			*/
+			PongLib.movePointer(pointerId, event.getX(pointerIndex), event.getY(pointerIndex));
+			break;
+		}
+		case MotionEvent.ACTION_UP:
+		case MotionEvent.ACTION_POINTER_UP:
+		case MotionEvent.ACTION_CANCEL: {
+			// a pointer was let up
+			PongLib.removePointer(pointerId);
+			break;
+		}
+		}
+		invalidate();
+
+		return true;
 	}
 }
