@@ -120,19 +120,11 @@ void Player::updatePos()
 	if (pos.y > dest.y)
 	{
 		diff = pos.y - dest.y;
-		//
-		//if (diff < (speed * dt))
-		//	setPos(pos.x, dest.y);
-		//else
-			setPos(pos.x, pos.y - (diff / (speed * dt)));
+		setPos(pos.x, pos.y - (diff / (speed * dt)));
 	}
 	else
 	{
 		diff = dest.y - pos.y;
-		//
-		//if (diff < (speed * dt))
-		//	setPos(pos.x, dest.y);
-		//else
-			setPos(pos.x, pos.y + (diff / (speed * dt)));
+		setPos(pos.x, pos.y + (diff / (speed * dt)));
 	}
 }

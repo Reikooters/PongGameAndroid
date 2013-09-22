@@ -34,6 +34,8 @@ void Application::renderFrame()
 	// Clear the screen
 	renderer->clear();
 
+	renderer->drawBacklight();
+
 	// Update and draw Player 1
 	player[0].update();
 	player[0].draw();

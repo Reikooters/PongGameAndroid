@@ -90,6 +90,7 @@ bool Renderer::setupGraphics(const int w, const int h)
         return false;
     }
     gvPositionHandle = glGetAttribLocation(gProgram, "vPosition");
+	gvColorHandle = glGetAttribLocation(gProgram, "vColor");
     checkGlError("glGetAttribLocation");
     LOGI("glGetAttribLocation(\"vPosition\") = %d\n",
             gvPositionHandle);
@@ -109,14 +110,70 @@ void Renderer::drawArray(const void* verts, const int count, const float colorR,
 	glUseProgram(gProgram);
 
 	// Set drawing color
-	glUniform4f(
-		glGetUniformLocation(gProgram, "color"),
-		colorR, colorG, colorB, colorA
-	);
+	//glUniform4f(
+	//	glGetUniformLocation(gProgram, "color"),
+	//	colorR, colorG, colorB, colorA
+	//);
+
+	GLfloat colors[] = { 1.0f, 1.0f, 1.0f, 1.0f,
+						 1.0f, 0.0f, 0.0f, 1.0f,
+						 0.0f, 1.0f, 0.0f, 1.0f,
+						 0.0f, 0.0f, 1.0f, 1.0f,
+						 1.0f, 1.0f, 1.0f, 1.0f,
+						 1.0f, 0.0f, 0.0f, 1.0f,
+						 0.0f, 1.0f, 0.0f, 1.0f,
+						 0.0f, 0.0f, 1.0f, 1.0f,
+						 1.0f, 1.0f, 1.0f, 1.0f,
+						 1.0f, 0.0f, 0.0f, 1.0f,
+						 0.0f, 1.0f, 0.0f, 1.0f,
+						 0.0f, 0.0f, 1.0f, 1.0f,
+						 1.0f, 1.0f, 1.0f, 1.0f,
+						 1.0f, 0.0f, 0.0f, 1.0f,
+						 0.0f, 1.0f, 0.0f, 1.0f,
+						 0.0f, 0.0f, 1.0f, 1.0f,
+						 1.0f, 1.0f, 1.0f, 1.0f,
+						 1.0f, 0.0f, 0.0f, 1.0f,
+						 0.0f, 1.0f, 0.0f, 1.0f,
+						 0.0f, 0.0f, 1.0f, 1.0f,
+						 1.0f, 1.0f, 1.0f, 1.0f,
+						 1.0f, 0.0f, 0.0f, 1.0f,
+						 0.0f, 1.0f, 0.0f, 1.0f,
+						 0.0f, 0.0f, 1.0f, 1.0f};
 
 	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, verts);
+	glVertexAttribPointer(gvColorHandle, 4, GL_FLOAT, GL_FALSE, 0, colors);
     glEnableVertexAttribArray(gvPositionHandle);
+	glEnableVertexAttribArray(gvColorHandle);
     glDrawArrays(GL_TRIANGLES, 0, count);
+}
+
+void Renderer::drawBacklight()
+{
+	glUseProgram(gProgram);
+
+	GLfloat square[] = { -1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 0.2f,  // Top player, upper left triangle
+						 1.0f, 1.0f, 1.0f, 0.2f, -1.0f, 0.2f,   // Top player, lower right triange
+						 -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -0.2f, // Bottom player, lower left triangle
+						 1.0f, -1.0f, 1.0f, -0.2f, -1.0f, -0.2f }; // Bottom player, upper right triangle
+	
+	GLfloat colors[] = { 0.5f, 0.0f, 0.8f, 0.7f,
+						 0.5f, 0.0f, 0.8f, 0.7f,
+						 0.5f, 0.0f, 0.8f, 0.0f,
+						 0.5f, 0.0f, 0.8f, 0.7f,
+						 0.5f, 0.0f, 0.8f, 0.0f,
+						 0.5f, 0.0f, 0.8f, 0.0f, // end of first square
+						 0.5f, 0.0f, 0.8f, 0.7f,
+						 0.5f, 0.0f, 0.8f, 0.7f,
+						 0.5f, 0.0f, 0.8f, 0.0f,
+						 0.5f, 0.0f, 0.8f, 0.7f,
+						 0.5f, 0.0f, 0.8f, 0.0f,
+						 0.5f, 0.0f, 0.8f, 0.0f }; // end of second square
+
+	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, square);
+	glVertexAttribPointer(gvColorHandle, 4, GL_FLOAT, GL_FALSE, 0, colors);
+    glEnableVertexAttribArray(gvPositionHandle);
+	glEnableVertexAttribArray(gvColorHandle);
+	glDrawArrays(GL_TRIANGLES, 0, 12);
 }
 
 void Renderer::clear()

@@ -23,16 +23,19 @@ static void checkGlError(const char* op) {
 
 static const char gVertexShader[] = 
 	"attribute vec4 vPosition;\n"
+	"attribute vec4 vColor;\n"
+	"varying vec4 fragColor;\n"
 	"void main() {\n"
 	"  gl_Position = vPosition;\n"
+	"  fragColor = vColor;\n"
 	"}\n";
 
 static const char gFragmentShader[] = 
 	"precision mediump float;\n"
-	"uniform vec4 color;\n"
+	"varying vec4 fragColor;\n"
 	"void main() {\n"
 	//"  gl_FragColor = vec4(0.5, 0.0, 0.8, 1.0);\n"
-	"  gl_FragColor = color;\n"
+	"  gl_FragColor = fragColor;\n"
 	"}\n";
 
 class Renderer
@@ -43,6 +46,7 @@ class Renderer
 public:
 	GLuint gProgram;
 	GLuint gvPositionHandle;
+	GLuint gvColorHandle;
 
 	Renderer(const int width, const int height);
 
@@ -50,4 +54,5 @@ public:
 	bool setupGraphics(const int w, const int h);
 	void drawArray(const void* verts, const int count, const float* color);
 	void drawArray(const void* verts, const int count, const float colorR, const float colorG, const float colorB, const float colorA);
+	void drawBacklight();
 };
