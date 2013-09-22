@@ -78,7 +78,7 @@ void Application::renderFrame()
     checkGlError("glDrawArrays");
 	*/
 
-	
+	timer->tick();
 }
 
 Player* Application::getPlayer(const int playerId) const

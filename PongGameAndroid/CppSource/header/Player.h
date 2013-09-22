@@ -7,6 +7,9 @@ class Player
 	// Height and width of the paddle.
 	const float height, width;
 
+	// Paddle movement speed.
+	const float speed;
+
 	// Current and destination position of the paddle
 	Vector2 pos, dest;
 

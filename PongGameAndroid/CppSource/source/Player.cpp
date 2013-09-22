@@ -9,7 +9,7 @@ extern Application* app;
 // Constructor. Iniitialises variables.
 Player::Player()
 	: height(0.45f), width(0.062f), // height and width of paddle - viewing phone horizontally
-	dirty(true)
+	speed(0.000008f), dirty(true)
 {
 	verts = new GLfloat[12];
 }
@@ -106,12 +106,29 @@ void Player::update()
 // Moves player toward destination position
 void Player::updatePos()
 {
-	float diff;
+	if (pos.y == dest.y)
+		return;
 
-	if (pos.y > dest.y) diff = pos.y - dest.y;
-	else diff = dest.y - pos.y;
+	float diff, newY, dt;
 
-	app->getTimer()->getDeltaTime();
+	dt = app->getTimer()->getDeltaTime();
 
-	setPos(pos.x, dest.y);
+	if (pos.y > dest.y)
+	{
+		diff = pos.y - dest.y;
+		//
+		//if (diff < (speed * dt))
+		//	setPos(pos.x, dest.y);
+		//else
+			setPos(pos.x, pos.y - (diff * (speed * dt)));
+	}
+	else
+	{
+		diff = dest.y - pos.y;
+		//
+		//if (diff < (speed * dt))
+		//	setPos(pos.x, dest.y);
+		//else
+			setPos(pos.x, pos.y + (diff * (speed * dt)));
+	}
 }
