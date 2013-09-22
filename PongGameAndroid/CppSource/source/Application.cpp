@@ -18,7 +18,10 @@ Application::Application(int width, int height)
 	timer(new Timer())
 {
 	player[0].setPos(0.61f, 0.0f);
+	player[0].setColor(0);
+
 	player[1].setPos(-0.61f, 0.0f);
+	player[0].setColor(1);
 }
 
 Application::~Application()

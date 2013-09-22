@@ -115,30 +115,12 @@ void Renderer::drawArray(const void* verts, const int count, const float colorR,
 	//	colorR, colorG, colorB, colorA
 	//);
 
-	GLfloat colors[] = { 1.0f, 1.0f, 1.0f, 1.0f,
-						 1.0f, 0.0f, 0.0f, 1.0f,
-						 0.0f, 1.0f, 0.0f, 1.0f,
-						 0.0f, 0.0f, 1.0f, 1.0f,
-						 1.0f, 1.0f, 1.0f, 1.0f,
-						 1.0f, 0.0f, 0.0f, 1.0f,
-						 0.0f, 1.0f, 0.0f, 1.0f,
-						 0.0f, 0.0f, 1.0f, 1.0f,
-						 1.0f, 1.0f, 1.0f, 1.0f,
-						 1.0f, 0.0f, 0.0f, 1.0f,
-						 0.0f, 1.0f, 0.0f, 1.0f,
-						 0.0f, 0.0f, 1.0f, 1.0f,
-						 1.0f, 1.0f, 1.0f, 1.0f,
-						 1.0f, 0.0f, 0.0f, 1.0f,
-						 0.0f, 1.0f, 0.0f, 1.0f,
-						 0.0f, 0.0f, 1.0f, 1.0f,
-						 1.0f, 1.0f, 1.0f, 1.0f,
-						 1.0f, 0.0f, 0.0f, 1.0f,
-						 0.0f, 1.0f, 0.0f, 1.0f,
-						 0.0f, 0.0f, 1.0f, 1.0f,
-						 1.0f, 1.0f, 1.0f, 1.0f,
-						 1.0f, 0.0f, 0.0f, 1.0f,
-						 0.0f, 1.0f, 0.0f, 1.0f,
-						 0.0f, 0.0f, 1.0f, 1.0f};
+	GLfloat colors[] = { colorR, colorG, colorB, colorA,
+						 colorR, colorG, colorB, colorA,
+						 colorR, colorG, colorB, colorA,
+						 colorR, colorG, colorB, colorA,
+						 colorR, colorG, colorB, colorA,
+						 colorR, colorG, colorB, colorA };
 
 	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, verts);
 	glVertexAttribPointer(gvColorHandle, 4, GL_FLOAT, GL_FALSE, 0, colors);

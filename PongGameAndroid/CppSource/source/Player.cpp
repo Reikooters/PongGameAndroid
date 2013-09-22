@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include <algorithm>
+
 #include "Application.h"
 #include "Renderer.h"
 #include "Timer.h"
@@ -9,9 +11,9 @@ extern Application* app;
 // Constructor. Iniitialises variables.
 Player::Player()
 	: height(0.45f), width(0.062f), // height and width of paddle - viewing phone horizontally
-	speed(0.0009f), dirty(true)
+	speed(0.0009f), dirty(true), color(0)
 {
-	verts = new GLfloat[12];
+	verts = new GLfloat[12]; // 6 points, 2 dimensional coords
 }
 
 // Draws the player on the screen.
@@ -26,7 +28,10 @@ void Player::draw()
 	if (grey < 0.8f)
 		grey = 0.8f;
 
-	app->getRenderer()->drawArray(verts, 6, grey, grey * 0.7f, 0.0f, 1.0f);
+	if (color == 0)
+		app->getRenderer()->drawArray(verts, 6, grey, grey * 0.7f, 0.0f, 1.0f);
+	else
+		app->getRenderer()->drawArray(verts, 6, 0.4f, grey * 0.9f, grey, 1.0f);
 }
 
 // Sets the position of the player. Sets dirty if new position is not the current one.
@@ -127,4 +132,9 @@ void Player::updatePos()
 		diff = dest.y - pos.y;
 		setPos(pos.x, pos.y + (diff / (speed * dt)));
 	}
+}
+
+void Player::setColor(int color)
+{
+	this->color = color;
 }
