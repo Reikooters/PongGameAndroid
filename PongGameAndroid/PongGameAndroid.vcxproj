@@ -76,6 +76,7 @@
     <ClInclude Include="CppSource\header\InputManager.h" />
     <ClInclude Include="CppSource\header\Player.h" />
     <ClInclude Include="CppSource\header\Renderer.h" />
+    <ClInclude Include="CppSource\header\TheBall.h" />
     <ClInclude Include="CppSource\header\Timer.h" />
     <ClInclude Include="CppSource\header\Vector2.h" />
   </ItemGroup>

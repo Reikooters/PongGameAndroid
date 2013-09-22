@@ -16,17 +16,19 @@ Player::Player()
 	verts = new GLfloat[12]; // 6 points, 2 dimensional coords
 }
 
+Player::~Player()
+{
+	delete[] verts;
+}
+
 // Draws the player on the screen.
 void Player::draw()
 {
 	// Make player blink orange
 	static float grey;
     grey += 0.003f;
-    if (grey > 1.0f) {
-        grey = 0.8f;
-    }
-	if (grey < 0.8f)
-		grey = 0.8f;
+    if (grey > 1.0f) grey = 0.8f;
+	else if (grey < 0.8f) grey = 0.8f;
 
 	if (color == 0)
 		app->getRenderer()->drawArray(verts, 6, grey, grey * 0.7f, 0.0f, 1.0f);

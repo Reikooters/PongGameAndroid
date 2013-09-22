@@ -1,0 +1,6 @@
+class TheBall
+{
+public:
+	TheBall();
+
+};

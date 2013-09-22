@@ -87,5 +87,8 @@
     <ClInclude Include="CppSource\header\Timer.h">
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CppSource\header\TheBall.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
