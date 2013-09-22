@@ -40,6 +40,10 @@ void Player::setPos(const float x, const float y)
 		pos.x = x;
 		pos.y = y;
 	}
+
+	// Clamp paddle position
+	if (pos.y < -0.75f) pos.y = -0.75f;
+	else if (pos.y > 0.75f) pos.y = 0.75f;
 }
 
 // Recalculates vertices that make up triangles to create the paddle
