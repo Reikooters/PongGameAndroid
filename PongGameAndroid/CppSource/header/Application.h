@@ -1,24 +1,26 @@
+#pragma once
+
 class Player;
 class Renderer;
 class InputManager;
+class Timer;
 
 class Application
 {
 	Player* player;
 	Renderer* renderer;
 	InputManager* inputManager;
+	Timer* timer;
 
 public:
 	
-
 	Application(int width, int height);
 	~Application();
 
 	void renderFrame();
-	void touched(int pointerId);
-	void untouched(int pointerId);
 	
-	Player* getPlayer(const int playerId);
-	Renderer* getRenderer();
-	InputManager* getInputManager();
+	Player* getPlayer(const int playerId) const;
+	Renderer* getRenderer() const;
+	InputManager* getInputManager() const;
+	Timer* getTimer() const;
 };

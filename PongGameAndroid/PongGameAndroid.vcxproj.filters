@@ -64,6 +64,9 @@
     <ClCompile Include="CppSource\source\InputManager.cpp">
       <Filter>CppSource\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CppSource\source\Timer.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h">
@@ -79,6 +82,9 @@
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CppSource\header\InputManager.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\header\Timer.h">
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

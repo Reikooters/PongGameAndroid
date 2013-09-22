@@ -1,3 +1,5 @@
+#pragma once
+
 #include <android/log.h>
 
 #include <GLES2/gl2.h>
@@ -44,7 +46,7 @@ public:
 
 	Renderer(const int width, const int height);
 
-	void renderFrame();
+	void clear();
 	bool setupGraphics(const int w, const int h);
 	void drawArray(const void* verts, const int count, const float* color);
 	void drawArray(const void* verts, const int count, const float colorR, const float colorG, const float colorB, const float colorA);

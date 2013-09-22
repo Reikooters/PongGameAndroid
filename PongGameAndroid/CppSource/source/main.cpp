@@ -29,7 +29,7 @@ JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject 
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_step(JNIEnv * env, jobject obj)
 {
-    app->renderFrame();
+	app->renderFrame();
 }
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_addPointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y)

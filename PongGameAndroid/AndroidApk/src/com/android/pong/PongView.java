@@ -359,16 +359,9 @@ class PongView extends GLSurfaceView {
 		}
 		case MotionEvent.ACTION_MOVE: {
 			// a pointer was moved
-			/*
 			for (int size = event.getPointerCount(), i = 0; i < size; i++) {
-				PointF point = mActivePointers.get(event.getPointerId(i));
-				if (point != null) {
-					point.x = event.getX(i);
-					point.y = event.getY(i);
-				}
+				PongLib.movePointer(event.getPointerId(i), event.getX(i), event.getY(i));
 			}
-			*/
-			PongLib.movePointer(pointerId, event.getX(pointerIndex), event.getY(pointerIndex));
 			break;
 		}
 		case MotionEvent.ACTION_UP:

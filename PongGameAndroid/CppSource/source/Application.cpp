@@ -10,14 +10,13 @@
 #include "Player.h"
 #include "Renderer.h"
 #include "InputManager.h"
+#include "Timer.h"
 
 // Constructor
 Application::Application(int width, int height)
+	: player(new Player[2]), renderer(new Renderer(width, height)), inputManager(new InputManager()),
+	timer(new Timer())
 {
-	player = new Player[2];
-	renderer = new Renderer(width, height);
-	inputManager = new InputManager();
-
 	player[0].setPos(0.61f, 0.0f);
 	player[1].setPos(-0.61f, 0.0f);
 }
@@ -27,16 +26,22 @@ Application::~Application()
 	delete[] player;
 	delete renderer;
 	delete inputManager;
+	delete timer;
 }
 
-// Renders one frame
 void Application::renderFrame()
 {
-	glClearColor(0.25f, 0.07f, 0.25f, 1.0f);
-	glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+	// Clear the screen
+	renderer->clear();
 
+	// Update and draw Player 1
+	player[0].update();
 	player[0].draw();
+
+	// Update and draw Player 2
+	player[1].update();
 	player[1].draw();
+	
 
 	/*
 	const GLfloat gTriangleVertices[] = { 0.0f, 0.5f, -0.5f, -0.5f,
@@ -72,32 +77,27 @@ void Application::renderFrame()
     glDrawArrays(GL_TRIANGLES, 0, 3);
     checkGlError("glDrawArrays");
 	*/
+
+	
 }
 
-void Application::touched(int pointerId)
-{
-	if (pointerId == 0 || pointerId == 1)
-		player[pointerId].setPos( player[pointerId].getPos().x , 0.5f);
-}
-
-void Application::untouched(int pointerId)
-{
-	if (pointerId == 0 || pointerId == 1)
-		player[pointerId].setPos( player[pointerId].getPos().x , 0.0f);
-}
-
-Player* Application::getPlayer(const int playerId)
+Player* Application::getPlayer(const int playerId) const
 {
 	if (playerId == 0 || playerId == 1)
 		return &player[playerId];
 }
 
-Renderer* Application::getRenderer()
+Renderer* Application::getRenderer() const
 {
 	return renderer;
 }
 
-InputManager* Application::getInputManager()
+InputManager* Application::getInputManager() const
 {
 	return inputManager;
+}
+
+Timer* Application::getTimer() const
+{
+	return timer;
 }

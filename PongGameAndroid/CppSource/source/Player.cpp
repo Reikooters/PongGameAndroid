@@ -2,12 +2,14 @@
 
 #include "Application.h"
 #include "Renderer.h"
+#include "Timer.h"
 
 extern Application* app;
 
-// Constructor
+// Constructor. Iniitialises variables.
 Player::Player()
-	: height(0.45f), width(0.062f) // height and width of paddle - viewing phone horizontally
+	: height(0.45f), width(0.062f), // height and width of paddle - viewing phone horizontally
+	dirty(true)
 {
 	verts = new GLfloat[12];
 }
@@ -15,25 +17,39 @@ Player::Player()
 // Draws the player on the screen.
 void Player::draw()
 {
+	// Make player blink orange
 	static float grey;
-    grey += 0.007f;
+    grey += 0.003f;
     if (grey > 1.0f) {
         grey = 0.8f;
     }
+	if (grey < 0.8f)
+		grey = 0.8f;
 
-	app->getRenderer()->drawArray(verts, 6, grey, 0.7f, 0.0f, 1.0f);
+	app->getRenderer()->drawArray(verts, 6, grey, grey * 0.7f, 0.0f, 1.0f);
 }
 
+// Sets the position of the player. Sets dirty if new position is not the current one.
 void Player::setPos(const float x, const float y)
 {
-	pos.x = x;
-	pos.y = y;
+	// Move only if necessary
+	if (pos.x != x || pos.y != y)
+	{
+		dirty = true;
 
-	recalcVerts();
+		pos.x = x;
+		pos.y = y;
+	}
 }
 
+// Recalculates vertices that make up triangles to create the paddle
 void Player::recalcVerts()
 {
+	// Recalc only if dirty
+	if (!dirty)
+		return;
+
+	// Calculate paddle corner coordinates
 	float x1 = pos.x - (width / 2);
 	float x2 = pos.x + (width / 2);
 	float y1 = pos.y - (height / 2);
@@ -58,14 +74,44 @@ void Player::recalcVerts()
 
 	verts[10] = y1;
 	verts[11] = x1;
+
+	// Remove dirty flag
+	dirty = false;
 }
 
+// Returns the current position of the player.
 Vector2 Player::getPos()
 {
 	return pos;
 }
 
+// Sets destination position of the paddle
 void Player::moveTo(float y)
 {
-	setPos(pos.x, y);
+	dest.x = pos.x;
+	dest.y = y;
+}
+
+// Updates Player status (such as position)
+void Player::update()
+{
+	// Update player position
+	updatePos();
+
+	// Recalculate verts if needed
+	if (dirty)
+		recalcVerts();
+}
+
+// Moves player toward destination position
+void Player::updatePos()
+{
+	float diff;
+
+	if (pos.y > dest.y) diff = pos.y - dest.y;
+	else diff = dest.y - pos.y;
+
+	app->getTimer()->getDeltaTime();
+
+	setPos(pos.x, dest.y);
 }

@@ -118,3 +118,9 @@ void Renderer::drawArray(const void* verts, const int count, const float colorR,
     glEnableVertexAttribArray(gvPositionHandle);
     glDrawArrays(GL_TRIANGLES, 0, count);
 }
+
+void Renderer::clear()
+{
+	glClearColor(0.25f, 0.07f, 0.25f, 1.0f);
+	glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+}

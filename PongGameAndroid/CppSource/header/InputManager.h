@@ -1,7 +1,10 @@
+#pragma once
+
 #include "Vector2.h"
 
 class InputManager
 {
+	/*
 	struct Pointer
 	{
 		bool active;
@@ -10,6 +13,9 @@ class InputManager
 	};
 
 	Pointer pointer[4];
+	*/
+
+	int pointer[2];
 
 public:
 	InputManager();
