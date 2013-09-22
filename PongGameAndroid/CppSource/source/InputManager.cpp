@@ -12,12 +12,12 @@ InputManager::InputManager()
 
 void InputManager::addPointer(const int pointerId, const float x, const float y)
 {
-	if (y < 900.0f)
+	if (y < 630.0f)
 	{
 		pointer[0] = pointerId; // Set player 1's pointer id
 		app->getPlayer(0)->moveTo(((x / 1080.0f) - 0.5f) * 2.0f);
 	}
-	else if (y > 980.0f)
+	else if (y > 1250.0f)
 	{
 		pointer[1] = pointerId; // Set player 2's pointer id
 		app->getPlayer(1)->moveTo(((x / 1080.0f) - 0.5f) * 2.0f);

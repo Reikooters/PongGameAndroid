@@ -59,7 +59,9 @@
     <None Include="AndroidApk\src\com\android\pong\PongView.java" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="AndroidApk\AndroidManifest.xml" />
+    <Xml Include="AndroidApk\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="AndroidApk\build.xml" />
     <Xml Include="AndroidApk\res\values\strings.xml" />
   </ItemGroup>
