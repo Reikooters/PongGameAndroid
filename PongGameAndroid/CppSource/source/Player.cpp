@@ -1,29 +1,55 @@
 #include "Player.h"
 
 #include "Application.h"
+#include "Renderer.h"
 
 extern Application* app;
 
 // Constructor
 Player::Player()
+	: height(0.45f), width(0.062f) // height and width of paddle - viewing phone horizontally
 {
-
+	verts = new GLfloat[12];
 }
 
 // Draws the player on the screen.
 void Player::draw()
 {
-	/*
-	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, gTriangleVertices);
-    glEnableVertexAttribArray(gvPositionHandle);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-	*/
+	app->renderer->drawArray(verts, 6, 1.0f, 0.7f, 0.0f, 1.0f);
+}
 
-	const GLfloat gTriangleVertices[] = { 0.0f, 0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f };
+void Player::setPos(const float x, const float y)
+{
+	pos.x = x;
+	pos.y = y;
 
-	glUseProgram(app->gProgram);
-	glVertexAttribPointer(app->gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, gTriangleVertices);
-    glEnableVertexAttribArray(app->gvPositionHandle);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+	recalcVerts();
+}
+
+void Player::recalcVerts()
+{
+	float x1 = pos.x - (width / 2);
+	float x2 = pos.x + (width / 2);
+	float y1 = pos.y - (height / 2);
+	float y2 = pos.y + (height / 2);
+
+	// Lower right triangle
+	verts[0] = y1;
+	verts[1] = x1;
+
+	verts[2] = y2;
+	verts[3] = x1;
+
+	verts[4] = y2;
+	verts[5] = x2;
+
+	// Upper left triangle
+	verts[6] = y2;
+	verts[7] = x2;
+
+	verts[8] = y1;
+	verts[9] = x2;
+
+	verts[10] = y1;
+	verts[11] = x1;
 }

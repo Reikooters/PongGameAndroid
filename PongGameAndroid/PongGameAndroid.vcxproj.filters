@@ -49,6 +49,9 @@
     <ClCompile Include="CppSource\source\Application.cpp">
       <Filter>CppSource\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CppSource\source\Renderer.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h">
@@ -58,6 +61,9 @@
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CppSource\header\Vector2.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\header\Renderer.h">
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

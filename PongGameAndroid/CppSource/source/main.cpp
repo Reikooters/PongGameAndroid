@@ -20,7 +20,6 @@ extern "C" {
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject obj,  jint width, jint height)
 {
 	app = new Application(width, height);
-    //app->setupGraphics(width, height);
 }
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_step(JNIEnv * env, jobject obj)

@@ -64,10 +64,12 @@
     <ClCompile Include="CppSource\source\Application.cpp" />
     <ClCompile Include="CppSource\source\main.cpp" />
     <ClCompile Include="CppSource\source\Player.cpp" />
+    <ClCompile Include="CppSource\source\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h" />
     <ClInclude Include="CppSource\header\Player.h" />
+    <ClInclude Include="CppSource\header\Renderer.h" />
     <ClInclude Include="CppSource\header\Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
