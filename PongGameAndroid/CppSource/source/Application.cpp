@@ -71,14 +71,14 @@ void Application::renderFrame()
 	*/
 }
 
-void Application::touched()
+void Application::touched(int pointerId)
 {
-	if (player)
-		player[0].setPos(0.61f, 0.5f);
+	if (pointerId == 0 || pointerId == 1)
+		player[pointerId].setPos( player[pointerId].getPos().x , 0.5f);
 }
 
-void Application::untouched()
+void Application::untouched(int pointerId)
 {
-	if (player)
-		player[0].setPos(0.61f, 0.0f);
+	if (pointerId == 0 || pointerId == 1)
+		player[pointerId].setPos( player[pointerId].getPos().x , 0.0f);
 }

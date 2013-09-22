@@ -12,6 +12,6 @@ public:
 	~Application();
 
 	void renderFrame();
-	void touched();
-	void untouched();
+	void touched(int pointerId);
+	void untouched(int pointerId);
 };
