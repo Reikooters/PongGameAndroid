@@ -9,6 +9,7 @@
 //#include <math.h>
 
 #include "Application.h"
+#include "InputManager.h"
 
 Application* app;
 
@@ -33,15 +34,15 @@ JNIEXPORT void JNICALL Java_com_android_pong_PongLib_step(JNIEnv * env, jobject 
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_addPointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y)
 {
-	app->touched(pointerId);
+	app->getInputManager()->addPointer(pointerId, x, y);
 }
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_movePointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y)
 {
-
+	app->getInputManager()->movePointer(pointerId, x, y);
 }
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_removePointer(JNIEnv * env, jobject obj, jint pointerId)
 {
-	app->untouched(pointerId);
+	app->getInputManager()->removePointer(pointerId);
 }

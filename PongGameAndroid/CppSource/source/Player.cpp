@@ -16,12 +16,12 @@ Player::Player()
 void Player::draw()
 {
 	static float grey;
-    grey += 0.01f;
+    grey += 0.007f;
     if (grey > 1.0f) {
-        grey = 0.0f;
+        grey = 0.8f;
     }
 
-	app->renderer->drawArray(verts, 6, grey, 0.7f, 0.0f, 1.0f);
+	app->getRenderer()->drawArray(verts, 6, grey, 0.7f, 0.0f, 1.0f);
 }
 
 void Player::setPos(const float x, const float y)
@@ -63,4 +63,9 @@ void Player::recalcVerts()
 Vector2 Player::getPos()
 {
 	return pos;
+}
+
+void Player::moveTo(float y)
+{
+	setPos(pos.x, y);
 }

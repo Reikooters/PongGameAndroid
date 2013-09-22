@@ -9,12 +9,14 @@
 
 #include "Player.h"
 #include "Renderer.h"
+#include "InputManager.h"
 
 // Constructor
 Application::Application(int width, int height)
 {
 	player = new Player[2];
 	renderer = new Renderer(width, height);
+	inputManager = new InputManager();
 
 	player[0].setPos(0.61f, 0.0f);
 	player[1].setPos(-0.61f, 0.0f);
@@ -24,6 +26,7 @@ Application::~Application()
 {
 	delete[] player;
 	delete renderer;
+	delete inputManager;
 }
 
 // Renders one frame
@@ -81,4 +84,20 @@ void Application::untouched(int pointerId)
 {
 	if (pointerId == 0 || pointerId == 1)
 		player[pointerId].setPos( player[pointerId].getPos().x , 0.0f);
+}
+
+Player* Application::getPlayer(const int playerId)
+{
+	if (playerId == 0 || playerId == 1)
+		return &player[playerId];
+}
+
+Renderer* Application::getRenderer()
+{
+	return renderer;
+}
+
+InputManager* Application::getInputManager()
+{
+	return inputManager;
 }
