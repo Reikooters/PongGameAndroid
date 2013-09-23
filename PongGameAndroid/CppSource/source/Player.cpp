@@ -13,9 +13,10 @@ Player::Player()
 	: GameObject(0.45f, 0.062f, // height and width of paddle - viewing phone horizontally
 	0.0009f, // speed
 	Vector2()), // position
-	color(0)
+	color(0), colorStep(0.8f) // color
 {
 	verts = new GLfloat[12]; // 6 points, 2 dimensional coords
+	colors = new GLfloat[24]; // 6 points, 4 floats make up each color
 }
 
 Player::~Player()
@@ -27,15 +28,14 @@ Player::~Player()
 void Player::draw()
 {
 	// Make player color blink
-	static float grey;
-    grey += 0.003f;
-    if (grey > 1.0f) grey = 0.8f;
-	else if (grey < 0.8f) grey = 0.8f;
+    colorStep += 0.003f;
+    if (colorStep > 1.0f) colorStep = 0.8f;
+	else if (colorStep < 0.8f) colorStep = 0.8f;
 
 	if (color == 0)
-		app->getRenderer()->drawArray(verts, 6, grey, grey * 0.7f, 0.0f, 1.0f);
+		app->getRenderer()->drawArray(verts, 6, colors);
 	else
-		app->getRenderer()->drawArray(verts, 6, 0.4f, grey * 0.9f, grey, 1.0f);
+		app->getRenderer()->drawArray(verts, 6, colors);
 }
 
 // Sets the position of the player. Sets dirty if new position is not the current one.
@@ -91,6 +91,9 @@ void Player::update()
 	// Update player position
 	updatePos();
 
+	// Update player color
+	updateColor();
+
 	// Recalculate verts if needed
 	if (dirty)
 		recalcVerts();
@@ -99,6 +102,7 @@ void Player::update()
 // Moves player toward destination position
 void Player::updatePos()
 {
+	// todo: fix this code and put it in GameObject::updatePos() instead.
 	if (pos.y == dest.y)
 		return;
 
@@ -121,6 +125,33 @@ void Player::updatePos()
 // Sets the paddle color. 0 = Orange, 1 = Red.
 void Player::setColor(int color)
 {
-	if (color == 0 || color == 1)
-		this->color = color;
+	if (color != 0 && color != 1)
+		return;
+
+	this->color = color;
+}
+
+// Animates the player's color
+void Player::updateColor()
+{
+	if (color == 0)
+	{
+		for (int i = 0; i < 6; ++i)
+		{
+			colors[(i*4)+0] = colorStep;
+			colors[(i*4)+1] = colorStep * 0.7f;
+			colors[(i*4)+2] = 0.0f;
+			colors[(i*4)+3] = 1.0f;
+		}
+	}
+	else if (color == 1)
+	{
+		for (int i = 0; i < 6; ++i)
+		{
+			colors[(i*4)+0] = 0.4f;
+			colors[(i*4)+1] = colorStep * 0.9f;
+			colors[(i*4)+2] = colorStep;
+			colors[(i*4)+3] = 1.0f;
+		}
+	}
 }

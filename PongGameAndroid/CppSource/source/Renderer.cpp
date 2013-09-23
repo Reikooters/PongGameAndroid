@@ -100,12 +100,7 @@ bool Renderer::setupGraphics(const int w, const int h)
     return true;
 }
 
-void Renderer::drawArray(const void* verts, const int count, const float *color)
-{
-	drawArray(verts, count, color[0], color[1], color[2], color[3]);
-}
-
-void Renderer::drawArray(const void* verts, const int count, const float colorR, const float colorG, const float colorB, const float colorA)
+void Renderer::drawArray(const void* verts, const int count, const void* colors)
 {
 	glUseProgram(gProgram);
 
@@ -114,13 +109,6 @@ void Renderer::drawArray(const void* verts, const int count, const float colorR,
 	//	glGetUniformLocation(gProgram, "color"),
 	//	colorR, colorG, colorB, colorA
 	//);
-
-	GLfloat colors[] = { colorR, colorG, colorB, colorA,
-						 colorR, colorG, colorB, colorA,
-						 colorR, colorG, colorB, colorA,
-						 colorR, colorG, colorB, colorA,
-						 colorR, colorG, colorB, colorA,
-						 colorR, colorG, colorB, colorA };
 
 	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, verts);
 	glVertexAttribPointer(gvColorHandle, 4, GL_FLOAT, GL_FALSE, 0, colors);

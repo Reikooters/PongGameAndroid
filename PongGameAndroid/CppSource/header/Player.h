@@ -7,12 +7,16 @@ class Player : public GameObject
 {
 	// Color of the paddle. 0 = Orange, 1 = Red.
 	int color;
+	float colorStep;
 
 	// Recalculates vertices that make up triangles to create the paddle
 	void recalcVerts();
 
 	// Moves player toward destination position
 	void updatePos();
+
+	// Animates the player's color
+	void updateColor();
 
 public:
 	// Constructor. Iniitialises variables.

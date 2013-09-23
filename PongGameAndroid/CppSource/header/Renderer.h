@@ -52,7 +52,6 @@ public:
 
 	void clear();
 	bool setupGraphics(const int w, const int h);
-	void drawArray(const void* verts, const int count, const float* color);
-	void drawArray(const void* verts, const int count, const float colorR, const float colorG, const float colorB, const float colorA);
+	void drawArray(const void* verts, const int count, const void* colors);
 	void drawBacklight();
 };
