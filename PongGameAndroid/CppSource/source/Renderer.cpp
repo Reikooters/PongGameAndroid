@@ -102,18 +102,18 @@ bool Renderer::setupGraphics(const int w, const int h)
 
 void Renderer::drawArray(const void* verts, const int count, const void* colors)
 {
+	// Set shader program
 	glUseProgram(gProgram);
 
-	// Set drawing color
-	//glUniform4f(
-	//	glGetUniformLocation(gProgram, "color"),
-	//	colorR, colorG, colorB, colorA
-	//);
-
+	// Set vertex position buffer
 	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, verts);
+	glEnableVertexAttribArray(gvPositionHandle);
+
+	// Set vertex color buffer
 	glVertexAttribPointer(gvColorHandle, 4, GL_FLOAT, GL_FALSE, 0, colors);
-    glEnableVertexAttribArray(gvPositionHandle);
 	glEnableVertexAttribArray(gvColorHandle);
+
+	// Draw the object
     glDrawArrays(GL_TRIANGLES, 0, count);
 }
 
