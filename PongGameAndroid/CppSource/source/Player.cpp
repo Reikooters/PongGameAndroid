@@ -26,6 +26,9 @@ Player::~Player()
 // Draws the player on the screen.
 void Player::draw()
 {
+	// Draw only if object is visible
+	if (!visible) return;
+
 	if (color == 0)
 		app->getRenderer()->drawArray(verts, 6, colors);
 	else

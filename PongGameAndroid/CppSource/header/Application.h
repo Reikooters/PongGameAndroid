@@ -5,6 +5,7 @@ class Renderer;
 class InputManager;
 class Timer;
 class TheBall;
+class ScoreToken;
 
 class Application
 {
@@ -14,6 +15,8 @@ class Application
 	InputManager* inputManager;
 	Timer* timer;
 	int scores[2];
+	ScoreToken* scoreTokenP1;
+	ScoreToken* scoreTokenP2;
 
 public:
 	// Delta time since last frame

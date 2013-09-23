@@ -29,6 +29,9 @@ protected:
 	// Moves object toward destination position
 	virtual void updatePos();
 
+	// Whether or not the object will be drawn when draw() is called.
+	bool visible;
+
 public:
 	GameObject();
 	GameObject(float height, float width, float speed, Vector2 pos);
@@ -54,4 +57,10 @@ public:
 
 	// Returns the width of the object
 	virtual float getWidth() const;
+
+	// Returns true if the object is visible, false if not.
+	virtual bool getVisible() const;
+
+	// Sets the object visibility state
+	virtual bool setVisible(const bool visible);
 };

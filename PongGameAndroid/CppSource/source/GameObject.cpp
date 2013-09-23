@@ -1,13 +1,15 @@
 #include "GameObject.h"
 
 GameObject::GameObject()
-	: height(0.5f), width(0.5f), speed(1.0f), pos(Vector2(0.0f, 0.0f)), dirty(true)
+	: height(0.5f), width(0.5f), speed(1.0f), pos(Vector2(0.0f, 0.0f)),
+	dirty(true), visible(true)
 {
 
 }
 
 GameObject::GameObject(float height, float width, float speed, Vector2 pos)
-	: height(height), width(width), speed(speed), pos(pos), dirty(true)
+	: height(height), width(width), speed(speed), pos(pos), dirty(true),
+	visible(true)
 {
 
 }
@@ -53,4 +55,14 @@ float GameObject::getHeight() const
 float GameObject::getWidth() const
 {
 	return width;
+}
+
+bool GameObject::getVisible() const
+{
+	return visible;
+}
+
+bool GameObject::setVisible(const bool visible)
+{
+	this->visible = visible;
 }

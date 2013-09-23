@@ -12,22 +12,40 @@
 #include "Renderer.h"
 #include "InputManager.h"
 #include "Timer.h"
+#include "ScoreToken.h"
 
 // Constructor
 Application::Application(int width, int height)
 	: player(new Player[2]), renderer(new Renderer(width, height)), inputManager(new InputManager()),
 	timer(new Timer()), theBall(new TheBall())
 {
+	scores[0] = 0;
+	scores[1] = 0;
+
 	player[0].setPos(0.61f, 0.0f);
 	player[0].setColor(1);
 
 	player[1].setPos(-0.61f, 0.0f);
 	player[1].setColor(0);
+
+	scoreTokenP1 = new ScoreToken[10];
+	scoreTokenP2 = new ScoreToken[10];
+
+	for (int i = 0; i < 10; ++i)
+	{
+		scoreTokenP1[i].setPos(-0.92f, -0.85f + (0.19f * i));
+		scoreTokenP2[i].setPos(0.92f, -0.85f + (0.19f * i));
+
+		scoreTokenP1[i].setVisible(false);
+		scoreTokenP2[i].setVisible(false);
+	}
 }
 
 Application::~Application()
 {
 	delete[] player;
+	delete[] scoreTokenP1;
+	delete[] scoreTokenP2;
 	delete theBall;
 	delete renderer;
 	delete inputManager;
@@ -54,6 +72,14 @@ void Application::renderFrame()
 	theBall->update();
 	theBall->draw();
 	
+	for (int i = 0; i < 10; ++i)
+	{
+		scoreTokenP1[i].update();
+		scoreTokenP1[i].draw();
+
+		scoreTokenP2[i].update();
+		scoreTokenP2[i].draw();
+	}
 
 	/*
 	const GLfloat gTriangleVertices[] = { 0.0f, 0.5f, -0.5f, -0.5f,
@@ -122,4 +148,12 @@ void Application::score(const int playerId)
 
 	scores[playerId] += 1;
 	theBall->reset();
+
+	if (scores[playerId] <= 10)
+	{
+		if (playerId == 0)
+			scoreTokenP1[ scores[playerId] - 1 ].setVisible(true);
+		else if (playerId == 1)
+			scoreTokenP2[ scores[playerId] - 1 ].setVisible(true);
+	}
 }

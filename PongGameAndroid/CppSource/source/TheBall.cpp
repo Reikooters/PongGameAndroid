@@ -28,13 +28,16 @@ TheBall::~TheBall()
 	delete[] colors;
 }
 
-// Draws the player on the screen.
+// Draws the ball on the screen.
 void TheBall::draw()
 {
+	// Draw only if object is visible
+	if (!visible) return;
+
 	app->getRenderer()->drawArray(verts, 6, colors);
 }
 
-// Sets the position of the player. Sets dirty if new position is not the current one.
+// Sets the position of the ball. Sets dirty if new position is not the current one.
 void TheBall::setPos(const float x, const float y)
 {
 	GameObject::setPos(x, y);
@@ -130,7 +133,7 @@ void TheBall::recalcVerts()
 	dirty = false;
 }
 
-// Updates Player status (such as position)
+// Updates Ball status (such as position)
 void TheBall::update()
 {
 	// Update ball position
@@ -144,17 +147,17 @@ void TheBall::update()
 		recalcVerts();
 }
 
-// Moves player toward destination position
+// Moves ball toward destination position
 void TheBall::updatePos()
 {
 	setPos(pos.x + (direction.x * speed * app->dt),
 		   pos.y + (direction.y * speed * app->dt));
 }
 
-// Animates the player's color
+// Animates the ball's color
 void TheBall::updateColor()
 {
-	// Make player color blink
+	// Make ball color blink
     colorStep += 0.003f;
     if (colorStep > 1.0f) colorStep = 0.8f;
 	else if (colorStep < 0.8f) colorStep = 0.8f;
@@ -168,6 +171,7 @@ void TheBall::updateColor()
 	}
 }
 
+// Reset ball back to starting position. Called after a player scores.
 void TheBall::reset()
 {
 	pos.x = 0.0f;
