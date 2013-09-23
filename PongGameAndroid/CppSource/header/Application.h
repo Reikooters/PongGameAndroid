@@ -28,4 +28,5 @@ public:
 	Renderer* getRenderer() const;
 	InputManager* getInputManager() const;
 	Timer* getTimer() const;
+	void score(const int playerId);
 };

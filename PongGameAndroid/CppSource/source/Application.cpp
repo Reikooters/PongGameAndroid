@@ -114,3 +114,12 @@ Timer* Application::getTimer() const
 {
 	return timer;
 }
+
+void Application::score(const int playerId)
+{
+	if (playerId != 0 && playerId != 1)
+		return;
+
+	scores[playerId] += 1;
+	theBall->reset();
+}

@@ -44,3 +44,13 @@ void GameObject::updatePos()
 {
 	// todo
 }
+
+float GameObject::getHeight() const
+{
+	return height;
+}
+
+float GameObject::getWidth() const
+{
+	return width;
+}

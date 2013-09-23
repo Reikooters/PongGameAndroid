@@ -48,4 +48,10 @@ public:
 
 	// Updates Player status (such as position)
 	virtual void update() = 0;
+
+	// Returns the height of the object
+	virtual float getHeight() const;
+
+	// Returns the width of the object
+	virtual float getWidth() const;
 };

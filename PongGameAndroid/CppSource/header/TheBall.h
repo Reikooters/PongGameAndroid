@@ -34,4 +34,7 @@ public:
 
 	// Updates Ball status (such as position)
 	void update();
+
+	// Reset ball back to starting position. Called after a player scores.
+	void reset();
 };
