@@ -122,7 +122,7 @@ void Player::updatePos()
 	}
 }
 
-// Sets the paddle color. 0 = Orange, 1 = Red.
+// Sets the paddle color. 0 = Pink, 1 = Blue.
 void Player::setColor(int color)
 {
 	if (color != 0 && color != 1)
@@ -139,8 +139,8 @@ void Player::updateColor()
 		for (int i = 0; i < 6; ++i)
 		{
 			colors[(i*4)+0] = colorStep;
-			colors[(i*4)+1] = colorStep * 0.7f;
-			colors[(i*4)+2] = 0.0f;
+			colors[(i*4)+1] = colorStep * 0.5f;
+			colors[(i*4)+2] = colorStep;
 			colors[(i*4)+3] = 1.0f;
 		}
 	}

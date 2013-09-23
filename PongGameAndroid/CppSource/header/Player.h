@@ -5,7 +5,7 @@
 
 class Player : public GameObject
 {
-	// Color of the paddle. 0 = Orange, 1 = Red.
+	// Color of the paddle. 0 = Pink, 1 = Blue.
 	int color;
 	float colorStep;
 
@@ -34,6 +34,6 @@ public:
 	// Updates Player status (such as position)
 	void update();
 
-	// Sets the paddle color. 0 = Orange, 1 = Red.
+	// Sets the paddle color. 0 = Pink, 1 = Blue.
 	void setColor(int color);
 };
