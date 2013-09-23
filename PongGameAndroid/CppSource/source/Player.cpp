@@ -1,7 +1,5 @@
 #include "Player.h"
 
-#include <algorithm>
-
 #include "Application.h"
 #include "Renderer.h"
 #include "Timer.h"
@@ -22,16 +20,12 @@ Player::Player()
 Player::~Player()
 {
 	delete[] verts;
+	delete[] colors;
 }
 
 // Draws the player on the screen.
 void Player::draw()
 {
-	// Make player color blink
-    colorStep += 0.003f;
-    if (colorStep > 1.0f) colorStep = 0.8f;
-	else if (colorStep < 0.8f) colorStep = 0.8f;
-
 	if (color == 0)
 		app->getRenderer()->drawArray(verts, 6, colors);
 	else
@@ -41,6 +35,9 @@ void Player::draw()
 // Sets the position of the player. Sets dirty if new position is not the current one.
 void Player::setPos(const float x, const float y)
 {
+	if (x != pos.x || y != pos.y)
+		dirty = true;
+
 	GameObject::setPos(x, y);
 
 	// Clamp paddle position
@@ -106,19 +103,17 @@ void Player::updatePos()
 	if (pos.y == dest.y)
 		return;
 
-	float diff, newY, dt;
-
-	dt = app->getTimer()->getDeltaTime();
+	float diff, newY;
 
 	if (pos.y > dest.y)
 	{
 		diff = pos.y - dest.y;
-		setPos(pos.x, pos.y - (diff / (speed * dt)));
+		setPos(pos.x, pos.y - (diff / (speed * app->dt)));
 	}
 	else
 	{
 		diff = dest.y - pos.y;
-		setPos(pos.x, pos.y + (diff / (speed * dt)));
+		setPos(pos.x, pos.y + (diff / (speed * app->dt)));
 	}
 }
 
@@ -134,6 +129,11 @@ void Player::setColor(int color)
 // Animates the player's color
 void Player::updateColor()
 {
+	// Make player color blink
+    colorStep += 0.003f;
+    if (colorStep > 1.0f) colorStep = 0.8f;
+	else if (colorStep < 0.8f) colorStep = 0.8f;
+
 	if (color == 0)
 	{
 		for (int i = 0; i < 6; ++i)

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Vector2.h"
 #include "GameObject.h"
 
 class Player : public GameObject

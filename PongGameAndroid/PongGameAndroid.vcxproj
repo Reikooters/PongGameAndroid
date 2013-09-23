@@ -72,6 +72,7 @@
     <ClCompile Include="CppSource\source\main.cpp" />
     <ClCompile Include="CppSource\source\Player.cpp" />
     <ClCompile Include="CppSource\source\Renderer.cpp" />
+    <ClCompile Include="CppSource\source\TheBall.cpp" />
     <ClCompile Include="CppSource\source\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>

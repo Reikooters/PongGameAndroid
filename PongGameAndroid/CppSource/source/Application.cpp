@@ -8,6 +8,7 @@
 //#include <math.h>
 
 #include "Player.h"
+#include "TheBall.h"
 #include "Renderer.h"
 #include "InputManager.h"
 #include "Timer.h"
@@ -15,7 +16,7 @@
 // Constructor
 Application::Application(int width, int height)
 	: player(new Player[2]), renderer(new Renderer(width, height)), inputManager(new InputManager()),
-	timer(new Timer())
+	timer(new Timer()), theBall(new TheBall())
 {
 	player[0].setPos(0.61f, 0.0f);
 	player[0].setColor(1);
@@ -27,6 +28,7 @@ Application::Application(int width, int height)
 Application::~Application()
 {
 	delete[] player;
+	delete theBall;
 	delete renderer;
 	delete inputManager;
 	delete timer;
@@ -37,6 +39,7 @@ void Application::renderFrame()
 	// Clear the screen
 	renderer->clear();
 
+	// Draw purple background gradients
 	renderer->drawBacklight();
 
 	// Update and draw Player 1
@@ -46,6 +49,10 @@ void Application::renderFrame()
 	// Update and draw Player 2
 	player[1].update();
 	player[1].draw();
+
+	// Update and draw The Ball
+	theBall->update();
+	theBall->draw();
 	
 
 	/*
@@ -84,6 +91,7 @@ void Application::renderFrame()
 	*/
 
 	timer->tick();
+	dt = timer->getDeltaTime();
 }
 
 Player* Application::getPlayer(const int playerId) const
