@@ -67,6 +67,9 @@
     <ClCompile Include="CppSource\source\Timer.cpp">
       <Filter>CppSource\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CppSource\source\GameObject.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h">
@@ -88,6 +91,9 @@
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CppSource\header\TheBall.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\header\GameObject.h">
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

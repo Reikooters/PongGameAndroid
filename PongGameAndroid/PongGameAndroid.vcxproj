@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppSource\source\Application.cpp" />
+    <ClCompile Include="CppSource\source\GameObject.cpp" />
     <ClCompile Include="CppSource\source\InputManager.cpp" />
     <ClCompile Include="CppSource\source\main.cpp" />
     <ClCompile Include="CppSource\source\Player.cpp" />
@@ -75,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h" />
+    <ClInclude Include="CppSource\header\GameObject.h" />
     <ClInclude Include="CppSource\header\InputManager.h" />
     <ClInclude Include="CppSource\header\Player.h" />
     <ClInclude Include="CppSource\header\Renderer.h" />

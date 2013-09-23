@@ -10,8 +10,10 @@ extern Application* app;
 
 // Constructor. Iniitialises variables.
 Player::Player()
-	: height(0.45f), width(0.062f), // height and width of paddle - viewing phone horizontally
-	speed(0.0009f), dirty(true), color(0)
+	: GameObject(0.45f, 0.062f, // height and width of paddle - viewing phone horizontally
+	0.0009f, // speed
+	Vector2()), // position
+	color(0)
 {
 	verts = new GLfloat[12]; // 6 points, 2 dimensional coords
 }
@@ -24,7 +26,7 @@ Player::~Player()
 // Draws the player on the screen.
 void Player::draw()
 {
-	// Make player blink orange
+	// Make player color blink
 	static float grey;
     grey += 0.003f;
     if (grey > 1.0f) grey = 0.8f;
@@ -39,14 +41,7 @@ void Player::draw()
 // Sets the position of the player. Sets dirty if new position is not the current one.
 void Player::setPos(const float x, const float y)
 {
-	// Move only if necessary
-	if (pos.x != x || pos.y != y)
-	{
-		dirty = true;
-
-		pos.x = x;
-		pos.y = y;
-	}
+	GameObject::setPos(x, y);
 
 	// Clamp paddle position
 	if (pos.y < -0.75f) pos.y = -0.75f;
@@ -90,19 +85,6 @@ void Player::recalcVerts()
 	dirty = false;
 }
 
-// Returns the current position of the player.
-Vector2 Player::getPos()
-{
-	return pos;
-}
-
-// Sets destination position of the paddle
-void Player::moveTo(float y)
-{
-	dest.x = pos.x;
-	dest.y = y;
-}
-
 // Updates Player status (such as position)
 void Player::update()
 {
@@ -136,7 +118,9 @@ void Player::updatePos()
 	}
 }
 
+// Sets the paddle color. 0 = Orange, 1 = Red.
 void Player::setColor(int color)
 {
-	this->color = color;
+	if (color == 0 || color == 1)
+		this->color = color;
 }
