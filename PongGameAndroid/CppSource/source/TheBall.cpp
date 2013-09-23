@@ -37,13 +37,16 @@ void TheBall::setPos(const float x, const float y)
 {
 	GameObject::setPos(x, y);
 
-	// Clamp paddle position and bounce off walls
-	if ((pos.y < -0.95f && direction.y < 0.0f) || (pos.y > 0.95f && direction.y > 0.0f)) direction.y = -direction.y;
+	const float wall = 0.95f;
+	const float goal = 1.1f;
+
+	// Clamp ball position and bounce off walls
+	if ((pos.y < -wall && direction.y < 0.0f) || (pos.y > wall && direction.y > 0.0f)) direction.y = -direction.y;
 
 	// Scored a goal
-	if ((pos.x < -0.975f && direction.x < 0.0f) || (pos.x > 0.975f && direction.x > 0.0f))
-		if (direction.x < 0.0f) setPos(0.0f, 0.0f);
-		else setPos(0.0f, 0.0f);
+	if ((pos.x < -goal && direction.x < 0.0f) || (pos.x > goal && direction.x > 0.0f))
+		if (direction.x < 0.0f) setPos(0.0f, 0.0f); // blue scored
+		else setPos(0.0f, 0.0f); // pink scored
 }
 
 // Recalculates vertices that make up triangles to create the paddle
