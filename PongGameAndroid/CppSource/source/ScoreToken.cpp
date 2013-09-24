@@ -9,7 +9,7 @@ extern Application* app;
 
 // Constructor. Iniitialises variables.
 ScoreToken::ScoreToken()
-	: GameObject(0.047f, 0.047f * (1080.0f / 1920.0f), // height and width of ball - viewing phone horizontally
+	: GameObject(0.047f, 0.047f * (1080.0f / 1920.0f), // height and width of score token - viewing phone horizontally
 	0.0f, // speed
 	Vector2()) // position
 {
@@ -46,14 +46,14 @@ void ScoreToken::setPos(const float x, const float y)
 	GameObject::setPos(x, y);
 }
 
-// Recalculates vertices that make up triangles to create the paddle
+// Recalculates vertices that make up triangles to create the score token
 void ScoreToken::recalcVerts()
 {
 	// Recalc only if dirty
 	if (!dirty)
 		return;
 
-	// Calculate paddle corner coordinates
+	// Calculate score token corner coordinates
 	float x1 = pos.x - (width / 2);
 	float x2 = pos.x + (width / 2);
 	float y1 = pos.y - (height / 2);
@@ -83,7 +83,7 @@ void ScoreToken::recalcVerts()
 	dirty = false;
 }
 
-// Updates Player status (such as position)
+// Updates Score Token status (such as position)
 void ScoreToken::update()
 {
 	// Update ball position
@@ -94,7 +94,7 @@ void ScoreToken::update()
 		recalcVerts();
 }
 
-// Moves player toward destination position
+// Moves score token toward destination position
 void ScoreToken::updatePos()
 {
 	

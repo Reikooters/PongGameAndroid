@@ -7,6 +7,7 @@
 #include <stdlib.h>
 //#include <math.h>
 
+#include "TitleText.h"
 #include "Player.h"
 #include "TheBall.h"
 #include "Renderer.h"
@@ -17,7 +18,7 @@
 // Constructor
 Application::Application(int width, int height)
 	: player(new Player[2]), renderer(new Renderer(width, height)), inputManager(new InputManager()),
-	timer(new Timer()), theBall(new TheBall())
+	timer(new Timer()), theBall(new TheBall()), titleText(new TitleText()), showTitle(true)
 {
 	scores[0] = 0;
 	scores[1] = 0;
@@ -59,6 +60,10 @@ void Application::renderFrame()
 
 	// Draw purple background gradients
 	renderer->drawBacklight();
+
+	// Draw title text
+	titleText->update();
+	titleText->draw();
 
 	// Update and draw Player 1
 	player[0].update();

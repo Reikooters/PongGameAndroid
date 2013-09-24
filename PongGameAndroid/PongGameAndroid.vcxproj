@@ -75,6 +75,7 @@
     <ClCompile Include="CppSource\source\ScoreToken.cpp" />
     <ClCompile Include="CppSource\source\TheBall.cpp" />
     <ClCompile Include="CppSource\source\Timer.cpp" />
+    <ClCompile Include="CppSource\source\TitleText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h" />
@@ -85,6 +86,7 @@
     <ClInclude Include="CppSource\header\ScoreToken.h" />
     <ClInclude Include="CppSource\header\TheBall.h" />
     <ClInclude Include="CppSource\header\Timer.h" />
+    <ClInclude Include="CppSource\header\TitleText.h" />
     <ClInclude Include="CppSource\header\Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

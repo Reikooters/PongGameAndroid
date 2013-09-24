@@ -1,5 +1,6 @@
 #pragma once
 
+class TitleText;
 class Player;
 class Renderer;
 class InputManager;
@@ -9,6 +10,8 @@ class ScoreToken;
 
 class Application
 {
+	bool showTitle;
+	TitleText* titleText;
 	Player* player;
 	TheBall* theBall;
 	Renderer* renderer;
