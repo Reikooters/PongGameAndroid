@@ -67,7 +67,18 @@ class PongSurfaceView extends GLSurfaceView {
 
 class PongRenderer implements GLSurfaceView.Renderer {
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        nativeInit();
+		// return apk file path (or null on error)
+		String apkFilePath = null;
+		ApplicationInfo appInfo = null;
+		PackageManager packMgmr = context.getPackageManager();
+		try {
+		    appInfo = packMgmr.getApplicationInfo("com.android.pong", 0);
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		    throw new RuntimeException("Unable to locate assets, aborting...");
+		}
+		apkFilePath = appInfo.sourceDir;
+		nativeInit(apkFilePath);
     }
 
     public void onSurfaceChanged(GL10 gl, int w, int h) {
@@ -79,7 +90,7 @@ class PongRenderer implements GLSurfaceView.Renderer {
         nativeRender();
     }
 
-    private static native void nativeInit();
+    private static native void nativeInit(String apkPath);
     private static native void nativeResize(int w, int h);
     private static native void nativeRender();
     private static native void nativeDone();

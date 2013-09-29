@@ -20,6 +20,9 @@ class TitleText : public GameObject
 	// Number of vertices in the object
 	int vertCount;
 
+	unsigned int texture;
+	float* texCoords;
+
 public:
 	// Constructor. Iniitialises variables.
 	TitleText();

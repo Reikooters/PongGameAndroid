@@ -46,6 +46,14 @@ import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.opengles.GL10;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+
+class Global {
+	public static String apkFilePath = null;
+}
+
 /**
  * A simple GLSurfaceView sub-class that demonstrate how to perform
  * OpenGL ES 2.0 rendering into a GL Surface. Note the following important
@@ -70,11 +78,38 @@ class PongView extends GLSurfaceView {
 
     public PongView(Context context) {
         super(context);
+
+		// return apk file path (or null on error)
+		//String apkFilePath = null;
+		ApplicationInfo appInfo = null;
+		PackageManager packMgmr = context.getPackageManager();
+		try {
+			appInfo = packMgmr.getApplicationInfo("com.android.pong", 0);
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Unable to locate assets, aborting...");
+		}
+		Global.apkFilePath = appInfo.sourceDir;
+
+
         init(false, 0, 0);
     }
 
     public PongView(Context context, boolean translucent, int depth, int stencil) {
         super(context);
+
+		// return apk file path (or null on error)
+		//String apkFilePath = null;
+		ApplicationInfo appInfo = null;
+		PackageManager packMgmr = context.getPackageManager();
+		try {
+			appInfo = packMgmr.getApplicationInfo("com.android.pong", 0);
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Unable to locate assets, aborting...");
+		}
+		Global.apkFilePath = appInfo.sourceDir;
+
         init(translucent, depth, stencil);
     }
 
@@ -329,7 +364,7 @@ class PongView extends GLSurfaceView {
         }
 
         public void onSurfaceChanged(GL10 gl, int width, int height) {
-            PongLib.init(width, height);
+            PongLib.init(width, height, Global.apkFilePath);
         }
 
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {

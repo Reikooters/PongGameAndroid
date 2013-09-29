@@ -22,6 +22,18 @@
     <Filter Include="AndroidApk\JavaSource">
       <UniqueIdentifier>{e1813901-ab9b-404d-ad06-3187b52b05ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PNG Loader">
+      <UniqueIdentifier>{e608294f-6ea9-4168-9c11-e7a37d96105e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PNG Loader\libpng">
+      <UniqueIdentifier>{7a759b85-2346-4e44-a8de-9eb6922d80dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PNG Loader\libzip">
+      <UniqueIdentifier>{6b70f1a5-7993-45d3-939f-dc435364e927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PNG Loader\zlib">
+      <UniqueIdentifier>{83ce83d4-ce28-4e4d-a55c-89f4cecfaaf3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="AndroidApk\project.properties">
@@ -35,6 +47,222 @@
     </None>
     <None Include="AndroidApk\src\com\android\pong\PongView.java">
       <Filter>AndroidApk\JavaSource</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\libzip.la">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_add.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_add_dir.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_close.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_delete.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_dirent.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_entry_free.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_entry_new.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_err_str.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_error.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_error_clear.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_error_get.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_error_get_sys_type.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_error_strerror.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_error_to_str.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_fclose.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_file_error_clear.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_file_error_get.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_file_get_offset.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_file_strerror.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_filerange_crc.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_fopen.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_fopen_index.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_fread.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_free.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_get_archive_comment.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_get_archive_flag.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_get_file_comment.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_get_name.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_get_num_files.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_memdup.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_name_locate.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_new.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_open.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_rename.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_replace.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_set_archive_comment.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_set_archive_flag.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_set_file_comment.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_set_name.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_source_buffer.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_source_file.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_source_filep.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_source_free.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_source_function.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_source_zip.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_stat.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_stat_index.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_stat_init.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_strerror.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_unchange.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_unchange_all.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_unchange_archive.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\libzip\zip_unchange_data.lo">
+      <Filter>PNG Loader\libzip</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\FAQ">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\INDEX">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\make_vms.com">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\Makefile">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\Makefile.in">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\README">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\treebuild.xml">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zconf.h.cmakein">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zconf.h.in">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zlib.3">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zlib.3.pdf">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zlib.map">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zlib.pc.cmakein">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zlib.pc.in">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\zlib2ansi">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\ChangeLog">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\CMakeLists.txt">
+      <Filter>PNG Loader\zlib</Filter>
+    </None>
+    <None Include="CppSource\Dependencies\zlib\configure">
+      <Filter>PNG Loader\zlib</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +307,261 @@
     <ClCompile Include="CppSource\source\TitleText.cpp">
       <Filter>CppSource\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\utils.cpp">
+      <Filter>PNG Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngwutil.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\png.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngerror.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngget.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngmem.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngpread.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngread.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngrio.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngrtran.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngrutil.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngset.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngtrans.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngwio.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngwrite.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libpng\pngwtran.c">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\mkstemp.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_add.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_add_dir.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_close.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_delete.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_dirent.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_entry_free.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_entry_new.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_err_str.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_error.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_error_clear.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_error_get.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_error_get_sys_type.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_error_strerror.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_error_to_str.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_fclose.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_file_error_clear.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_file_error_get.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_file_get_offset.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_file_strerror.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_filerange_crc.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_fopen.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_fopen_index.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_fread.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_free.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_get_archive_comment.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_get_archive_flag.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_get_file_comment.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_get_name.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_get_num_files.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_memdup.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_name_locate.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_new.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_open.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_rename.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_replace.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_set_archive_comment.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_set_archive_flag.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_set_file_comment.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_set_name.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_source_buffer.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_source_file.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_source_filep.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_source_free.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_source_function.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_source_zip.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_stat.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_stat_index.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_stat_init.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_strerror.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_unchange.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_unchange_all.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_unchange_archive.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\libzip\zip_unchange_data.c">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\deflate.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\gzclose.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\gzlib.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\gzread.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\gzwrite.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\infback.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\inffast.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\inflate.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\inftrees.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\trees.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\uncompr.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\zutil.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\adler32.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\compress.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSource\Dependencies\zlib\crc32.c">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h">
@@ -110,6 +593,66 @@
     </ClInclude>
     <ClInclude Include="CppSource\header\TitleText.h">
       <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\utils.h">
+      <Filter>PNG Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\def.h">
+      <Filter>PNG Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\libpng\config.h">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\libpng\png.h">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\libpng\pngconf.h">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\libpng\pngpriv.h">
+      <Filter>PNG Loader\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\libzip\zipint.h">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\libzip\config.h">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\libzip\zip.h">
+      <Filter>PNG Loader\libzip</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\deflate.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\gzguts.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\inffast.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\inffixed.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\inflate.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\inftrees.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\trees.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\zconf.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\zlib.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\zutil.h">
+      <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\Dependencies\zlib\crc32.h">
+      <Filter>PNG Loader\zlib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

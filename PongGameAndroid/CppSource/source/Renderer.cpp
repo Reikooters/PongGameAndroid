@@ -4,8 +4,11 @@
 
 Renderer::Renderer(const int width, const int height)
 {
+	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); 
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 
 	setupGraphics(width, height);
 }
@@ -91,6 +94,8 @@ bool Renderer::setupGraphics(const int w, const int h)
     }
     gvPositionHandle = glGetAttribLocation(gProgram, "vPosition");
 	gvColorHandle = glGetAttribLocation(gProgram, "vColor");
+	gvTexCoordHandle = glGetAttribLocation(gProgram, "vTexCoord");
+	gvColorMapHandle = glGetUniformLocation(gProgram, "colorMap");
     checkGlError("glGetAttribLocation");
     LOGI("glGetAttribLocation(\"vPosition\") = %d\n",
             gvPositionHandle);
@@ -116,6 +121,37 @@ void Renderer::drawArray(const void* verts, const int count, const void* colors)
 	// Draw the object
     glDrawArrays(GL_TRIANGLES, 0, count);
 }
+
+void Renderer::drawArray(const void* verts, const int count, const void* colors, const void* texCoords, GLuint texId)
+{
+	// Set shader program
+	glUseProgram(gProgram);
+
+	// Set vertex position buffer
+	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, verts);
+	glEnableVertexAttribArray(gvPositionHandle);
+
+	// Set vertex color buffer
+	glVertexAttribPointer(gvColorHandle, 4, GL_FLOAT, GL_FALSE, 0, colors);
+	glEnableVertexAttribArray(gvColorHandle);
+
+	// Set texture coord buffer
+	glVertexAttribPointer(gvTexCoordHandle, 2, GL_FLOAT, GL_FALSE, 0, texCoords);
+	glEnableVertexAttribArray(gvTexCoordHandle);
+
+	// Bind texture
+	glUniform1i(gvColorMapHandle, 0);
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texId);
+
+	// Draw the object
+    glDrawArrays(GL_TRIANGLES, 0, count);
+
+	// Unbind texture
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+	
 
 void Renderer::drawBacklight()
 {

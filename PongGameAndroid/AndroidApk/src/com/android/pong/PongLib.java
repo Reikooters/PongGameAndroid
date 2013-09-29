@@ -28,7 +28,7 @@ public class PongLib {
      * @param width the current view width
      * @param height the current view height
      */
-     public static native void init(int width, int height);
+     public static native void init(int width, int height, String apkPath);
      public static native void step();
 	 
 	 // Touch functions

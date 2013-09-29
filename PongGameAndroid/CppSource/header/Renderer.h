@@ -24,18 +24,31 @@ static void checkGlError(const char* op) {
 static const char gVertexShader[] = 
 	"attribute vec4 vPosition;\n"
 	"attribute vec4 vColor;\n"
+	"attribute vec2 vTexCoord;\n"
 	"varying vec4 fragColor;\n"
+	"varying vec2 texCoord;\n"
+	//"out vec2 TexCoord0;\n"
 	"void main() {\n"
 	"  gl_Position = vPosition;\n"
 	"  fragColor = vColor;\n"
+	"  texCoord = vTexCoord;\n"
+	//"  TexCoord0 = vTexCoord;\n"
+	//"  gl_TexCoord[0] = gl_MultiTexCoord0;\n"
 	"}\n";
 
 static const char gFragmentShader[] = 
 	"precision mediump float;\n"
 	"varying vec4 fragColor;\n"
+	"varying vec2 texCoord;\n"
+	"uniform sampler2D colorMap;\n"
 	"void main() {\n"
 	//"  gl_FragColor = vec4(0.5, 0.0, 0.8, 1.0);\n"
-	"  gl_FragColor = fragColor;\n"
+	//"  gl_FragColor = fragColor;\n"
+	//"  gl_FragColor = fragColor * texture2D(colorMap, TexCoord0.st);\n"
+	//"  gl_FragColor = fragColor * texture2D(0, texCoord.st);\n"
+	"  gl_FragColor = fragColor * texture2D(colorMap, texCoord);\n"
+	//"  gl_FragColor = texture2D(colorMap, texCoord.st);\n"
+	//"  gl_FragColor = fragColor;\n"
 	"}\n";
 
 class Renderer
@@ -47,11 +60,14 @@ public:
 	GLuint gProgram;
 	GLuint gvPositionHandle;
 	GLuint gvColorHandle;
+	GLuint gvTexCoordHandle;
+	GLuint gvColorMapHandle;
 
 	Renderer(const int width, const int height);
 
 	void clear();
 	bool setupGraphics(const int w, const int h);
 	void drawArray(const void* verts, const int count, const void* colors);
+	void drawArray(const void* verts, const int count, const void* colors, const void* texCoords, GLuint texId);
 	void drawBacklight();
 };

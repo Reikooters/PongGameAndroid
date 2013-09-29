@@ -14,7 +14,7 @@
 Application* app;
 
 extern "C" {
-    JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject obj,  jint width, jint height);
+    JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring apkPath);
     JNIEXPORT void JNICALL Java_com_android_pong_PongLib_step(JNIEnv * env, jobject obj);
 
 	JNIEXPORT void JNICALL Java_com_android_pong_PongLib_addPointer(JNIEnv * env, jobject obj, jint pointerId, jfloat x, jfloat y);
@@ -22,9 +22,13 @@ extern "C" {
 	JNIEXPORT void JNICALL Java_com_android_pong_PongLib_removePointer(JNIEnv * env, jobject obj, jint pointerId);
 };
 
-JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject obj,  jint width, jint height)
+JNIEXPORT void JNICALL Java_com_android_pong_PongLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring apkPath)
 {
-	app = new Application(width, height);
+	const char* str;
+	jboolean isCopy;
+	str = env->GetStringUTFChars(apkPath, &isCopy);
+
+	app = new Application(width, height, str);
 }
 
 JNIEXPORT void JNICALL Java_com_android_pong_PongLib_step(JNIEnv * env, jobject obj)

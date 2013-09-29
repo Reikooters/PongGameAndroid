@@ -25,7 +25,7 @@ public:
 	// Delta time since last frame
 	float dt;
 
-	Application(int width, int height);
+	Application(int width, int height, const char* apkPath);
 	~Application();
 
 	void renderFrame();
@@ -35,4 +35,5 @@ public:
 	InputManager* getInputManager() const;
 	Timer* getTimer() const;
 	void score(const int playerId);
+	void loadAPK(const char* apkPath);
 };
