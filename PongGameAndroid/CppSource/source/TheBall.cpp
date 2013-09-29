@@ -6,20 +6,23 @@
 #include "Player.h"
 #include "Vector2.h"
 
+#include <stdlib.h>
+#include <math.h>
+
 extern Application* app;
 
 // Constructor. Iniitialises variables.
 TheBall::TheBall()
 	: GameObject(0.077f, 0.077f * (1080.0f / 1920.0f), // height and width of ball - viewing phone horizontally
-	0.000011f, // speed
+	0.000025f, // speed
 	Vector2()), // position
 	colorStep(0.8f) // color
 {
 	verts = new GLfloat[12]; // 6 points, 2 dimensional coords
 	colors = new GLfloat[24]; // 6 points, 4 floats make up each color
 
-	direction.x = 0.07f * (1080.0f / 1920.0f);
-	direction.y = 0.07f;
+	direction.x = 0.06f * (1080.0f / 1920.0f);
+	direction.y = 0.03f;
 }
 
 TheBall::~TheBall()
@@ -69,13 +72,22 @@ void TheBall::setPos(const float x, const float y)
 	{
 		// Check if paddle hit the ball
 		Player* nearPlayer;
+		int nearPlayerId;
 		float nearPlayerPos;
 		float nearPlayerHeight;
 
 		// Ball is near blue player
-		if (pos.x < 0.0f) nearPlayer = app->getPlayer(1);
+		if (pos.x < 0.0f)
+		{
+			nearPlayer = app->getPlayer(1);
+			nearPlayerId = 1;
+		}
 		// Ball is near pink player
-		else if (pos.x > 0.0f) nearPlayer = app->getPlayer(0);
+		else if (pos.x > 0.0f)
+		{
+			nearPlayer = app->getPlayer(0);
+			nearPlayerId = 0;
+		}
 
 		nearPlayerPos = nearPlayer->getPos().y;
 		nearPlayerHeight = nearPlayer->getHeight();
@@ -92,7 +104,31 @@ void TheBall::setPos(const float x, const float y)
 
 		// The ball hit
 		if (bMax > pMin && bMin < pMax)
+		{
+			//direction.x = -direction.x;
+
+			float intersect = (nearPlayerPos + 1.0f) - (pos.y + 1.0f);
+
+			//if (nearPlayerId == 1)
+			intersect = -intersect;
+
+			//float random = static_cast<float>(drand48());
+
 			direction.x = -direction.x;
+			//direction.y = ((intersect / 0.5f) + 1.0f + ((random - 0.5f) / 5.0f));
+			direction.y = (intersect / 0.5f);
+
+			// Normalise vector
+			float magnitude = sqrtf(x * x + y * y);
+			if (magnitude == 0.0f)
+				magnitude = 0.000001f;
+
+			//direction.x /= magnitude;
+			direction.y /= magnitude;
+
+			//direction.x /= (1.0f / 0.07f) * (1080.0f / 1920.0f);
+			direction.y /= (1.0f / 0.07f);
+		}
 	}
 }
 

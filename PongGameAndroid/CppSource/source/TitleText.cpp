@@ -36,6 +36,8 @@ TitleText::~TitleText()
 // Draws the title text on the screen.
 void TitleText::draw()
 {
+	return; // disabled for now
+
 	// Draw only if object is visible
 	if (!visible) return;
 

@@ -20,6 +20,9 @@ Application::Application(int width, int height)
 	: player(new Player[2]), renderer(new Renderer(width, height)), inputManager(new InputManager()),
 	timer(new Timer()), theBall(new TheBall()), titleText(new TitleText()), showTitle(true)
 {
+	// Seed random number generator
+	srand48(time(NULL));
+
 	scores[0] = 0;
 	scores[1] = 0;
 
