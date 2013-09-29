@@ -4,23 +4,28 @@
 #include "Renderer.h"
 #include "Timer.h"
 
+// Contains loadTextureFromPNG()
+#include "utils.h"
+
 extern Application* app;
 
 // Constructor. Iniitialises variables.
 Player::Player()
-	: GameObject(0.45f, 0.062f, // height and width of paddle - viewing phone horizontally
+	: GameObject(0.45f * 1.2f, 0.062f * 1.2f, // height and width of paddle - viewing phone horizontally
 	0.0009f, // speed
 	Vector2()), // position
 	color(0), colorStep(0.8f) // color
 {
 	verts = new GLfloat[12]; // 6 points, 2 dimensional coords
 	colors = new GLfloat[24]; // 6 points, 4 floats make up each color
+	texCoords = new GLfloat[12]; // 6 points, 2 dimensional coords
 }
 
 Player::~Player()
 {
 	delete[] verts;
 	delete[] colors;
+	delete[] texCoords;
 }
 
 // Draws the player on the screen.
@@ -30,9 +35,9 @@ void Player::draw()
 	if (!visible) return;
 
 	if (color == 0)
-		app->getRenderer()->drawArray(verts, 6, colors);
+		app->getRenderer()->drawArray(verts, 6, colors, texCoords, texture);
 	else
-		app->getRenderer()->drawArray(verts, 6, colors);
+		app->getRenderer()->drawArray(verts, 6, colors, texCoords, texture);
 }
 
 // Sets the position of the player. Sets dirty if new position is not the current one.
@@ -121,7 +126,7 @@ void Player::updatePos()
 }
 
 // Sets the paddle color. 0 = Pink, 1 = Blue.
-void Player::setColor(int color)
+void Player::setColor(const int color)
 {
 	if (color != 0 && color != 1)
 		return;
@@ -132,6 +137,8 @@ void Player::setColor(int color)
 // Animates the player's color
 void Player::updateColor()
 {
+	return; // disabled for now
+
 	// Make player color blink
     colorStep += 0.003f;
     if (colorStep > 1.0f) colorStep = 0.8f;
@@ -156,5 +163,37 @@ void Player::updateColor()
 			colors[(i*4)+2] = colorStep;
 			colors[(i*4)+3] = 1.0f;
 		}
+	}
+}
+
+// Loads texture for the player from .apk
+void Player::loadTexture()
+{
+	// Don't load again if already loaded
+	if (texture)
+		return;
+
+	// Load texture from file
+	int width, height;
+	if (playerId == 0)
+		texture = loadTextureFromPNG("assets/player0.png", width, height);
+	else
+		texture = loadTextureFromPNG("assets/player1.png", width, height);
+
+	// Set up texture coords
+	texCoords[0] = 0.0f;	texCoords[1] = 1.0f;
+	texCoords[2] = 1.0f;	texCoords[3] = 1.0f;
+	texCoords[4] = 1.0f;	texCoords[5] = 0.0f;
+	texCoords[6] = 1.0f;	texCoords[7] = 0.0f;
+	texCoords[8] = 0.0f;	texCoords[9] = 0.0f;
+	texCoords[10] = 0.0f;	texCoords[11] = 1.0f;
+
+	// Set up vertex colors
+	for (int i = 0; i < 6; ++i)
+	{
+		colors[(i*4)+0] = 1.0f;
+		colors[(i*4)+1] = 1.0f;
+		colors[(i*4)+2] = 1.0f;
+		colors[(i*4)+3] = 1.0f;
 	}
 }

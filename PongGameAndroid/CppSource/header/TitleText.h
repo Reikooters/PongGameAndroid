@@ -20,15 +20,15 @@ class TitleText : public GameObject
 	// Number of vertices in the object
 	int vertCount;
 
-	unsigned int texture;
-	float* texCoords;
-
 public:
 	// Constructor. Iniitialises variables.
 	TitleText();
 
 	// Destructor. Frees memory.
 	~TitleText();
+
+	// Loads texture for the title text from .apk
+	void loadTexture();
 
 	// Draws the title text
 	void draw();

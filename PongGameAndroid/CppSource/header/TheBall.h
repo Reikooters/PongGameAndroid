@@ -26,6 +26,9 @@ public:
 	// Destructor. Frees memory.
 	~TheBall();
 
+	// Loads texture for the ball from .apk
+	void loadTexture();
+
 	// Draws the ball
 	void draw();
 

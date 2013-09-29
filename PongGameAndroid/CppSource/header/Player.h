@@ -18,11 +18,17 @@ class Player : public GameObject
 	void updateColor();
 
 public:
+	// Player Id for this player
+	int playerId;
+
 	// Constructor. Iniitialises variables.
 	Player();
 
 	// Destructor. Frees memory.
 	~Player();
+
+	// Loads texture for the player from .apk
+	void loadTexture();
 
 	// Draws the player
 	void draw();
@@ -34,5 +40,5 @@ public:
 	void update();
 
 	// Sets the paddle color. 0 = Pink, 1 = Blue.
-	void setColor(int color);
+	void setColor(const int color);
 };

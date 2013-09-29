@@ -9,7 +9,7 @@ GameObject::GameObject()
 
 GameObject::GameObject(float height, float width, float speed, Vector2 pos)
 	: height(height), width(width), speed(speed), pos(pos), dirty(true),
-	visible(true)
+	visible(true), texture(0)
 {
 
 }

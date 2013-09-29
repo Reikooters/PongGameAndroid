@@ -9,6 +9,9 @@
 #include <stdlib.h>
 #include <math.h>
 
+// Contains loadTextureFromPNG()
+#include "utils.h"
+
 extern Application* app;
 
 // Constructor. Iniitialises variables.
@@ -20,6 +23,7 @@ TheBall::TheBall()
 {
 	verts = new GLfloat[12]; // 6 points, 2 dimensional coords
 	colors = new GLfloat[24]; // 6 points, 4 floats make up each color
+	texCoords = new GLfloat[12]; // 6 points, 2 dimensional coords
 
 	direction.x = 0.06f * (1080.0f / 1920.0f);
 	direction.y = 0.03f;
@@ -29,6 +33,7 @@ TheBall::~TheBall()
 {
 	delete[] verts;
 	delete[] colors;
+	delete[] texCoords;
 }
 
 // Draws the ball on the screen.
@@ -214,4 +219,35 @@ void TheBall::reset()
 	pos.y = 0.0f;
 	direction.x = -direction.x;
 	dirty = true;
+}
+
+// Loads texture for the ball from .apk
+void TheBall::loadTexture()
+{
+	return; // disabled for now
+
+	// Don't load again if already loaded
+	if (texture)
+		return;
+
+	// Load texture from file
+	int width, height;
+	texture = loadTextureFromPNG("assets/theball.png", width, height);
+
+	// Set up texture coords
+	texCoords[0] = 1.0f;	texCoords[1] = 0.0f;
+	texCoords[2] = 1.0f;	texCoords[3] = 1.0f;
+	texCoords[4] = 0.0f;	texCoords[5] = 1.0f;
+	texCoords[6] = 0.0f;	texCoords[7] = 1.0f;
+	texCoords[8] = 0.0f;	texCoords[9] = 0.0f;
+	texCoords[10] = 1.0f;	texCoords[11] = 0.0f;
+
+	// Set up vertex colors
+	for (int i = 0; i < 6; ++i)
+	{
+		colors[(i*4)+0] = 1.0f;
+		colors[(i*4)+1] = 1.0f;
+		colors[(i*4)+2] = 1.0f;
+		colors[(i*4)+3] = 1.0f;
+	}
 }

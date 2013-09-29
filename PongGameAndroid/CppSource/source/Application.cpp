@@ -31,14 +31,25 @@ Application::Application(int width, int height, const char* apkPath)
 	// Seed random number generator
 	srand48(time(NULL));
 
+	// Set scores
 	scores[0] = 0;
 	scores[1] = 0;
 
+	// Set up players
 	player[0].setPos(0.61f, 0.0f);
 	player[0].setColor(1);
+	player[0].playerId = 0;
 
 	player[1].setPos(-0.61f, 0.0f);
 	player[1].setColor(0);
+	player[1].playerId = 1;
+
+	// Set up game object pointers
+	gameObjects = new GameObject*[24];
+	gameObjects[0] = &player[0];
+	gameObjects[1] = &player[1];
+	gameObjects[2] = theBall;
+	gameObjects[3] = titleText;
 
 	scoreTokenP1 = new ScoreToken[10];
 	scoreTokenP2 = new ScoreToken[10];
@@ -50,7 +61,13 @@ Application::Application(int width, int height, const char* apkPath)
 
 		scoreTokenP1[i].setVisible(false);
 		scoreTokenP2[i].setVisible(false);
+
+		// Set up game object pointers
+		gameObjects[4 + i] = &scoreTokenP1[i];
+		gameObjects[14 + i] = &scoreTokenP2[i];
 	}
+
+	loadTextures();
 }
 
 Application::~Application()
@@ -59,6 +76,7 @@ Application::~Application()
 	delete[] scoreTokenP1;
 	delete[] scoreTokenP2;
 	delete theBall;
+	delete titleText;
 	delete renderer;
 	delete inputManager;
 	delete timer;
@@ -96,65 +114,12 @@ void Application::renderFrame()
 	// Draw purple background gradients
 	renderer->drawBacklight();
 	
-	// Draw title text
-	titleText->update();
-	titleText->draw();
-
-	// Update and draw Player 1
-	player[0].update();
-	player[0].draw();
-
-	// Update and draw Player 2
-	player[1].update();
-	player[1].draw();
-
-	// Update and draw The Ball
-	theBall->update();
-	theBall->draw();
-	
-	for (int i = 0; i < 10; ++i)
+	// Draw all game objects
+	for (int i = 23; i >= 0; --i)
 	{
-		scoreTokenP1[i].update();
-		scoreTokenP1[i].draw();
-
-		scoreTokenP2[i].update();
-		scoreTokenP2[i].draw();
+		gameObjects[i]->update();
+		gameObjects[i]->draw();
 	}
-
-	/*
-	const GLfloat gTriangleVertices[] = { 0.0f, 0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f };
-
-	glUseProgram(gProgram);
-	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, gTriangleVertices);
-    glEnableVertexAttribArray(gvPositionHandle);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-	*/
-
-	/*
-	static float grey;
-    grey += 0.01f;
-    if (grey > 1.0f) {
-        grey = 0.0f;
-    }
-    glClearColor(grey, grey, grey, 1.0f);
-    checkGlError("glClearColor");
-    glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-    checkGlError("glClear");
-
-    glUseProgram(gProgram);
-    checkGlError("glUseProgram");
-
-	const GLfloat gTriangleVertices[] = { 0.0f, 0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f };
-
-    glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, gTriangleVertices);
-    checkGlError("glVertexAttribPointer");
-    glEnableVertexAttribArray(gvPositionHandle);
-    checkGlError("glEnableVertexAttribArray");
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    checkGlError("glDrawArrays");
-	*/
 
 	timer->tick();
 	dt = timer->getDeltaTime();
@@ -196,4 +161,10 @@ void Application::score(const int playerId)
 		else if (playerId == 1)
 			scoreTokenP2[ scores[playerId] - 1 ].setVisible(true);
 	}
+}
+
+void Application::loadTextures()
+{
+	for (int i = 0; i < 24; ++i)
+		gameObjects[i]->loadTexture();
 }

@@ -17,6 +17,9 @@ public:
 	// Destructor. Frees memory.
 	~ScoreToken();
 
+	// Loads texture for the score token from .apk
+	void loadTexture();
+
 	// Draws the score token
 	void draw();
 

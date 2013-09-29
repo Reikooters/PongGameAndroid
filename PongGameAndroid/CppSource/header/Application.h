@@ -7,6 +7,7 @@ class InputManager;
 class Timer;
 class TheBall;
 class ScoreToken;
+class GameObject;
 
 class Application
 {
@@ -20,6 +21,8 @@ class Application
 	int scores[2];
 	ScoreToken* scoreTokenP1;
 	ScoreToken* scoreTokenP2;
+
+	GameObject** gameObjects;
 
 public:
 	// Delta time since last frame
@@ -36,4 +39,5 @@ public:
 	Timer* getTimer() const;
 	void score(const int playerId);
 	void loadAPK(const char* apkPath);
+	void loadTextures();
 };
