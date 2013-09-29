@@ -37,6 +37,7 @@ static const char gVertexShader[] =
 	"}\n";
 
 static const char gFragmentShader[] = 
+	"uniform float useTexture;\n"
 	"precision mediump float;\n"
 	"varying vec4 fragColor;\n"
 	"varying vec2 texCoord;\n"
@@ -46,7 +47,14 @@ static const char gFragmentShader[] =
 	//"  gl_FragColor = fragColor;\n"
 	//"  gl_FragColor = fragColor * texture2D(colorMap, TexCoord0.st);\n"
 	//"  gl_FragColor = fragColor * texture2D(0, texCoord.st);\n"
-	"  gl_FragColor = fragColor * texture2D(colorMap, texCoord);\n"
+	"  if (useTexture > 0.5)\n"
+	"  {\n"
+	"     gl_FragColor = fragColor * texture2D(colorMap, texCoord);\n"
+	"  }\n"
+	"  else\n"
+	"  {\n"
+	"     gl_FragColor = fragColor;\n"
+	"  }\n"
 	//"  gl_FragColor = texture2D(colorMap, texCoord.st);\n"
 	//"  gl_FragColor = fragColor;\n"
 	"}\n";
@@ -62,6 +70,7 @@ public:
 	GLuint gvColorHandle;
 	GLuint gvTexCoordHandle;
 	GLuint gvColorMapHandle;
+	GLuint gvUseTextureHandle;
 
 	Renderer(const int width, const int height);
 

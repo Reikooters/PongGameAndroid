@@ -11,6 +11,9 @@ class ScoreToken : public GameObject
 	void updatePos();
 
 public:
+	// Player Id for this score token
+	int playerId;
+
 	// Constructor. Iniitialises variables.
 	ScoreToken();
 

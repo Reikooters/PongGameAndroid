@@ -57,9 +57,11 @@ Application::Application(int width, int height, const char* apkPath)
 	for (int i = 0; i < 10; ++i)
 	{
 		scoreTokenP1[i].setPos(-0.92f, -0.85f + (0.19f * i));
-		scoreTokenP2[i].setPos(0.92f, -0.85f + (0.19f * i));
-
+		scoreTokenP1[i].playerId = 1;
 		scoreTokenP1[i].setVisible(false);
+
+		scoreTokenP2[i].setPos(0.92f, -0.85f + (0.19f * i));
+		scoreTokenP2[i].playerId = 0;
 		scoreTokenP2[i].setVisible(false);
 
 		// Set up game object pointers

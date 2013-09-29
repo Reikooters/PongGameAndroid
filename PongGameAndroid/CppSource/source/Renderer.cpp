@@ -96,6 +96,7 @@ bool Renderer::setupGraphics(const int w, const int h)
 	gvColorHandle = glGetAttribLocation(gProgram, "vColor");
 	gvTexCoordHandle = glGetAttribLocation(gProgram, "vTexCoord");
 	gvColorMapHandle = glGetUniformLocation(gProgram, "colorMap");
+	gvUseTextureHandle = glGetUniformLocation(gProgram, "useTexture");
     checkGlError("glGetAttribLocation");
     LOGI("glGetAttribLocation(\"vPosition\") = %d\n",
             gvPositionHandle);
@@ -111,6 +112,7 @@ void Renderer::drawArray(const void* verts, const int count, const void* colors)
 	glUseProgram(gProgram);
 
 	// Set vertex position buffer
+	glUniform1f(gvUseTextureHandle, 0.0f);
 	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, verts);
 	glEnableVertexAttribArray(gvPositionHandle);
 
@@ -142,6 +144,8 @@ void Renderer::drawArray(const void* verts, const int count, const void* colors,
 	// Bind texture
 	glUniform1i(gvColorMapHandle, 0);
 
+	glUniform1f(gvUseTextureHandle, 1.0f);
+
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texId);
 
@@ -156,6 +160,7 @@ void Renderer::drawArray(const void* verts, const int count, const void* colors,
 void Renderer::drawBacklight()
 {
 	glUseProgram(gProgram);
+	glUniform1f(gvUseTextureHandle, 0.0f);
 
 	GLfloat square[] = { -1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 0.2f,  // Top player, upper left triangle
 						 1.0f, 1.0f, 1.0f, 0.2f, -1.0f, 0.2f,   // Top player, lower right triange

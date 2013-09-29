@@ -12,7 +12,7 @@ extern Application* app;
 
 // Constructor. Iniitialises variables.
 ScoreToken::ScoreToken()
-	: GameObject(0.047f, 0.047f * (1080.0f / 1920.0f), // height and width of score token - viewing phone horizontally
+	: GameObject(0.247f, 0.247f * (1080.0f / 1920.0f), // height and width of score token - viewing phone horizontally
 	0.0f, // speed
 	Vector2()) // position
 {
@@ -34,7 +34,7 @@ void ScoreToken::draw()
 	// Draw only if object is visible
 	if (!visible) return;
 
-	app->getRenderer()->drawArray(verts, 6, colors);
+	app->getRenderer()->drawArray(verts, 6, colors, texCoords, texture);
 }
 
 // Sets the position of the score token. Sets dirty if new position is not the current one.
@@ -100,23 +100,24 @@ void ScoreToken::updatePos()
 // Loads texture for the ball from .apk
 void ScoreToken::loadTexture()
 {
-	return; // disabled for now
-
 	// Don't load again if already loaded
 	if (texture)
 		return;
 
 	// Load texture from file
 	int width, height;
-	texture = loadTextureFromPNG("assets/scoretoken.png", width, height);
+	if (playerId == 0)
+		texture = loadTextureFromPNG("assets/scoretoken0.png", width, height);
+	else
+		texture = loadTextureFromPNG("assets/scoretoken1.png", width, height);
 
 	// Set up texture coords
-	texCoords[0] = 1.0f;	texCoords[1] = 0.0f;
+	texCoords[0] = 0.0f;	texCoords[1] = 1.0f;
 	texCoords[2] = 1.0f;	texCoords[3] = 1.0f;
-	texCoords[4] = 0.0f;	texCoords[5] = 1.0f;
-	texCoords[6] = 0.0f;	texCoords[7] = 1.0f;
+	texCoords[4] = 1.0f;	texCoords[5] = 0.0f;
+	texCoords[6] = 1.0f;	texCoords[7] = 0.0f;
 	texCoords[8] = 0.0f;	texCoords[9] = 0.0f;
-	texCoords[10] = 1.0f;	texCoords[11] = 0.0f;
+	texCoords[10] = 0.0f;	texCoords[11] = 1.0f;
 
 	// Set up vertex colors
 	for (int i = 0; i < 6; ++i)

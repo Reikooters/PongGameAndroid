@@ -16,7 +16,7 @@ extern Application* app;
 
 // Constructor. Iniitialises variables.
 TheBall::TheBall()
-	: GameObject(0.077f, 0.077f * (1080.0f / 1920.0f), // height and width of ball - viewing phone horizontally
+	: GameObject(0.117f, 0.117f * (1080.0f / 1920.0f), // height and width of ball - viewing phone horizontally
 	0.000025f, // speed
 	Vector2()), // position
 	colorStep(0.8f) // color
@@ -42,7 +42,7 @@ void TheBall::draw()
 	// Draw only if object is visible
 	if (!visible) return;
 
-	app->getRenderer()->drawArray(verts, 6, colors);
+	app->getRenderer()->drawArray(verts, 6, colors, texCoords, texture);
 }
 
 // Sets the position of the ball. Sets dirty if new position is not the current one.
@@ -224,8 +224,6 @@ void TheBall::reset()
 // Loads texture for the ball from .apk
 void TheBall::loadTexture()
 {
-	return; // disabled for now
-
 	// Don't load again if already loaded
 	if (texture)
 		return;
@@ -235,12 +233,12 @@ void TheBall::loadTexture()
 	texture = loadTextureFromPNG("assets/theball.png", width, height);
 
 	// Set up texture coords
-	texCoords[0] = 1.0f;	texCoords[1] = 0.0f;
+	texCoords[0] = 0.0f;	texCoords[1] = 1.0f;
 	texCoords[2] = 1.0f;	texCoords[3] = 1.0f;
-	texCoords[4] = 0.0f;	texCoords[5] = 1.0f;
-	texCoords[6] = 0.0f;	texCoords[7] = 1.0f;
+	texCoords[4] = 1.0f;	texCoords[5] = 0.0f;
+	texCoords[6] = 1.0f;	texCoords[7] = 0.0f;
 	texCoords[8] = 0.0f;	texCoords[9] = 0.0f;
-	texCoords[10] = 1.0f;	texCoords[11] = 0.0f;
+	texCoords[10] = 0.0f;	texCoords[11] = 1.0f;
 
 	// Set up vertex colors
 	for (int i = 0; i < 6; ++i)
