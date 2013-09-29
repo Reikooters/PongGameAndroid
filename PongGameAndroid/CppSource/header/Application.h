@@ -40,4 +40,7 @@ public:
 	void score(const int playerId);
 	void loadAPK(const char* apkPath);
 	void loadTextures();
+	void gameOver(const int winnerPlayerId);
+	void startGame();
+	bool playing() const;
 };

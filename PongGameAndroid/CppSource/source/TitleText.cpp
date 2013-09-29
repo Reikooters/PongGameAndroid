@@ -105,22 +105,20 @@ void TitleText::updatePos()
 // Animates the title text's color
 void TitleText::updateColor()
 {
-	return; // disabled for now
-
 	if (colorDir)
-		colorStep += 0.048f;
+		colorStep += 0.005f;
 	else
-		colorStep -= 0.048f;
+		colorStep -= 0.005f;
 
-	if (colorStep > 0.4f) { colorStep = 0.4f; colorDir = !colorDir; }
+	if (colorStep > 0.2f) { colorStep = 0.2f; colorDir = !colorDir; }
 	else if (colorStep < 0.0f) { colorStep = 0.0f; colorDir = !colorDir; }
 
 	for (int i = 0; i < vertCount; ++i)
 	{
-		colors[(i*4)+0] = 1.0f - colorStep * (0.66f + ((i / (float)vertCount) / 3.0f));
-		colors[(i*4)+1] = 0.4f - colorStep;
-		colors[(i*4)+2] = 1.0f - colorStep * (0.66f + ((i / (float)vertCount) / 3.0f));
-		colors[(i*4)+3] = 1.0f;
+		colors[(i*4)+0] = 1.0f;
+		colors[(i*4)+1] = 1.0f;
+		colors[(i*4)+2] = 1.0f;
+		colors[(i*4)+3] = 1.0f - colorStep;
 	}
 }
 

@@ -197,3 +197,22 @@ void Player::loadTexture()
 		colors[(i*4)+3] = 1.0f;
 	}
 }
+
+// Sets the paddle back to the initial state
+void Player::reset()
+{
+	if (playerId == 1)
+	{
+		pos.x = -0.61f;
+		pos.y = 0.0f;
+		dest.x = -0.61f;
+		dest.y = 0.0f;
+	}
+	else if (playerId == 0)
+	{
+		pos.x = 0.61f;
+		pos.y = 0.0f;
+		dest.x = 0.61f;
+		dest.y = 0.0f;
+	}
+}

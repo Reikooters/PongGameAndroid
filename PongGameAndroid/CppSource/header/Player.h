@@ -41,4 +41,7 @@ public:
 
 	// Sets the paddle color. 0 = Pink, 1 = Blue.
 	void setColor(const int color);
+
+	// Sets the paddle back to the initial state
+	void reset();
 };

@@ -12,6 +12,9 @@ InputManager::InputManager()
 
 void InputManager::addPointer(const int pointerId, const float x, const float y)
 {
+	if (!app->playing())
+		app->startGame();
+
 	if (y < 630.0f)
 	{
 		pointer[0] = pointerId; // Set player 1's pointer id

@@ -36,13 +36,13 @@ Application::Application(int width, int height, const char* apkPath)
 	scores[1] = 0;
 
 	// Set up players
-	player[0].setPos(0.61f, 0.0f);
 	player[0].setColor(1);
 	player[0].playerId = 0;
+	player[0].reset();
 
-	player[1].setPos(-0.61f, 0.0f);
 	player[1].setColor(0);
 	player[1].playerId = 1;
+	player[1].reset();
 
 	// Set up game object pointers
 	gameObjects = new GameObject*[24];
@@ -115,12 +115,20 @@ void Application::renderFrame()
 
 	// Draw purple background gradients
 	renderer->drawBacklight();
-	
-	// Draw all game objects
-	for (int i = 23; i >= 0; --i)
+
+	if (showTitle)
 	{
-		gameObjects[i]->update();
-		gameObjects[i]->draw();
+		titleText->update();
+		titleText->draw();
+	}
+	else
+	{
+		// Draw all game objects
+		for (int i = 23; i >= 0; --i)
+		{
+			gameObjects[i]->update();
+			gameObjects[i]->draw();
+		}
 	}
 
 	timer->tick();
@@ -163,10 +171,45 @@ void Application::score(const int playerId)
 		else if (playerId == 1)
 			scoreTokenP2[ scores[playerId] - 1 ].setVisible(true);
 	}
+	else
+	{
+		// The player who scored won the game
+		gameOver(playerId);
+	}
 }
 
 void Application::loadTextures()
 {
 	for (int i = 0; i < 24; ++i)
 		gameObjects[i]->loadTexture();
+}
+
+void Application::gameOver(const int winnerPlayerId)
+{
+	theBall->reset();
+	player[0].reset();
+	player[1].reset();
+
+	scores[0] = 0;
+	scores[1] = 0;
+
+	for (int i = 0; i < 10; ++i)
+	{
+		scoreTokenP1[i].setVisible(false);
+		scoreTokenP2[i].setVisible(false);
+	}
+
+	showTitle = true;
+	titleText->setVisible(true);
+}
+
+void Application::startGame()
+{
+	showTitle = false;
+	titleText->setVisible(false);
+}
+
+bool Application::playing() const
+{
+	return !showTitle;
 }
