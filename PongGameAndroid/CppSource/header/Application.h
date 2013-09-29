@@ -2,6 +2,7 @@
 
 class TitleText;
 class TapToPlayText;
+class WinnerText;
 class Player;
 class Renderer;
 class InputManager;
@@ -12,9 +13,9 @@ class GameObject;
 
 class Application
 {
-	bool showTitle;
 	TitleText* titleText;
 	TapToPlayText* tapToPlayText;
+	WinnerText* winnerText;
 	Player* player;
 	TheBall* theBall;
 	Renderer* renderer;
@@ -29,6 +30,9 @@ class Application
 public:
 	// Delta time since last frame
 	float dt;
+
+	bool showTitle;
+	bool showWinner;
 
 	Application(int width, int height, const char* apkPath);
 	~Application();
@@ -45,4 +49,5 @@ public:
 	void gameOver(const int winnerPlayerId);
 	void startGame();
 	bool playing() const;
+	void showTitleScreen();
 };

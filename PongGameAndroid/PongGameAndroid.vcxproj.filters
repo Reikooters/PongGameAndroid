@@ -565,6 +565,9 @@
     <ClCompile Include="CppSource\source\TapToPlayText.cpp">
       <Filter>CppSource\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CppSource\source\WinnerText.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h">
@@ -658,6 +661,9 @@
       <Filter>PNG Loader\zlib</Filter>
     </ClInclude>
     <ClInclude Include="CppSource\header\TapToPlayText.h">
+      <Filter>CppSource\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\header\WinnerText.h">
       <Filter>CppSource\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

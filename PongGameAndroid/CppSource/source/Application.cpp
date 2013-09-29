@@ -9,6 +9,7 @@
 
 #include "TitleText.h"
 #include "TapToPlayText.h"
+#include "WinnerText.h"
 #include "Player.h"
 #include "TheBall.h"
 #include "Renderer.h"
@@ -26,7 +27,7 @@ zip* APKArchive;
 Application::Application(int width, int height, const char* apkPath)
 	: player(new Player[2]), renderer(new Renderer(width, height)), inputManager(new InputManager()),
 	timer(new Timer()), theBall(new TheBall()), titleText(new TitleText()), showTitle(true),
-	tapToPlayText(new TapToPlayText())
+	tapToPlayText(new TapToPlayText()), winnerText(new WinnerText()), showWinner(false)
 {
 	loadAPK(apkPath);
 
@@ -47,12 +48,15 @@ Application::Application(int width, int height, const char* apkPath)
 	player[1].reset();
 
 	// Set up game object pointers
-	gameObjects = new GameObject*[24];
+	gameObjects = new GameObject*[26];
 	gameObjects[0] = &player[0];
 	gameObjects[1] = &player[1];
 	gameObjects[2] = theBall;
 	gameObjects[3] = titleText;
 	gameObjects[4] = tapToPlayText;
+	gameObjects[5] = winnerText;
+
+	winnerText->setVisible(false);
 
 	scoreTokenP1 = new ScoreToken[10];
 	scoreTokenP2 = new ScoreToken[10];
@@ -68,8 +72,8 @@ Application::Application(int width, int height, const char* apkPath)
 		scoreTokenP2[i].setVisible(false);
 
 		// Set up game object pointers
-		gameObjects[5 + i] = &scoreTokenP1[i];
-		gameObjects[15 + i] = &scoreTokenP2[i];
+		gameObjects[6 + i] = &scoreTokenP1[i];
+		gameObjects[16 + i] = &scoreTokenP2[i];
 	}
 
 	loadTextures();
@@ -126,10 +130,15 @@ void Application::renderFrame()
 		tapToPlayText->update();
 		tapToPlayText->draw();
 	}
+	else if (showWinner)
+	{
+		winnerText->update();
+		winnerText->draw();
+	}
 	else
 	{
 		// Draw all game objects
-		for (int i = 24; i >= 0; --i)
+		for (int i = 25; i >= 0; --i)
 		{
 			gameObjects[i]->update();
 			gameObjects[i]->draw();
@@ -185,7 +194,7 @@ void Application::score(const int playerId)
 
 void Application::loadTextures()
 {
-	for (int i = 0; i < 25; ++i)
+	for (int i = 0; i < 26; ++i)
 		gameObjects[i]->loadTexture();
 }
 
@@ -204,19 +213,46 @@ void Application::gameOver(const int winnerPlayerId)
 		scoreTokenP2[i].setVisible(false);
 	}
 
-	showTitle = true;
-	titleText->setVisible(true);
-	tapToPlayText->setVisible(true);
+	player[0].setVisible(false);
+	player[1].setVisible(false);
+	theBall->setVisible(false);
+
+	winnerText->playerId = winnerPlayerId;
+	winnerText->setVisible(true);
+	winnerText->reset();
+	showWinner = true;
+
+	//showTitle = true;
+	//titleText->setVisible(true);
+	//tapToPlayText->setVisible(true);
 }
 
 void Application::startGame()
 {
 	showTitle = false;
+	showWinner = false;
 	titleText->setVisible(false);
 	tapToPlayText->setVisible(false);
+	winnerText->setVisible(false);
+
+	player[0].setVisible(true);
+	player[1].setVisible(true);
+	theBall->setVisible(true);
+}
+
+void Application::showTitleScreen()
+{
+	showTitle = true;
+	winnerText->setVisible(false);
+	titleText->setVisible(true);
+	tapToPlayText->setVisible(true);
+	showWinner = false;
 }
 
 bool Application::playing() const
 {
-	return !showTitle;
+	if (!showTitle && !showWinner)
+		return true;
+	else
+		return false;
 }

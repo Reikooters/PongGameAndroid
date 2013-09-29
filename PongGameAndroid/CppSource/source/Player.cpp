@@ -215,4 +215,5 @@ void Player::reset()
 		dest.x = 0.61f;
 		dest.y = 0.0f;
 	}
+	dirty = true;
 }

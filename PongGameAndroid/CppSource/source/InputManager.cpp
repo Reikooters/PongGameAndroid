@@ -12,7 +12,7 @@ InputManager::InputManager()
 
 void InputManager::addPointer(const int pointerId, const float x, const float y)
 {
-	if (!app->playing())
+	if (app->showTitle)
 		app->startGame();
 
 	if (y < 630.0f)

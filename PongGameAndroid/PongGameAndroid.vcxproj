@@ -234,6 +234,7 @@
     <ClCompile Include="CppSource\source\TheBall.cpp" />
     <ClCompile Include="CppSource\source\Timer.cpp" />
     <ClCompile Include="CppSource\source\TitleText.cpp" />
+    <ClCompile Include="CppSource\source\WinnerText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\Dependencies\def.h" />
@@ -267,6 +268,7 @@
     <ClInclude Include="CppSource\header\Timer.h" />
     <ClInclude Include="CppSource\header\TitleText.h" />
     <ClInclude Include="CppSource\header\Vector2.h" />
+    <ClInclude Include="CppSource\header\WinnerText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
