@@ -1,4 +1,4 @@
-#include "TitleText.h"
+#include "TapToPlayText.h"
 
 #include "Application.h"
 #include "Renderer.h"
@@ -11,9 +11,9 @@
 extern Application* app;
 
 // Constructor. Iniitialises variables.
-TitleText::TitleText()
+TapToPlayText::TapToPlayText()
 	//: GameObject(0.9f, 0.047f * (1080.0f / 1920.0f), // height and width - viewing phone horizontally
-	: GameObject(2.0f, 2.0f, // height and width - viewing phone horizontally
+	: GameObject(0.3f, 1.25f, // height and width - viewing phone horizontally
 	0.0f, // speed
 	Vector2()), // position
 	vertCount(6),
@@ -23,18 +23,18 @@ TitleText::TitleText()
 	colors = new GLfloat[vertCount * 4]; // 4 floats make up each color
 	texCoords = new GLfloat[vertCount * 2]; // 2 dimensional coords
 
-	pos.y = 0.125f;
+	pos.y = -0.75f;
 }
 
-TitleText::~TitleText()
+TapToPlayText::~TapToPlayText()
 {
 	delete[] verts;
 	delete[] colors;
 	delete[] texCoords;
 }
 
-// Draws the title text on the screen.
-void TitleText::draw()
+// Draws the text on the screen.
+void TapToPlayText::draw()
 {
 	// Draw only if object is visible
 	if (!visible) return;
@@ -42,14 +42,14 @@ void TitleText::draw()
 	app->getRenderer()->drawArray(verts, vertCount, colors, texCoords, texture);
 }
 
-// Sets the position of the title text. Sets dirty if new position is not the current one.
-void TitleText::setPos(const float x, const float y)
+// Sets the position of the text. Sets dirty if new position is not the current one.
+void TapToPlayText::setPos(const float x, const float y)
 {
 	GameObject::setPos(x, y);
 }
 
-// Recalculates vertices that make up triangles to create the title text
-void TitleText::recalcVerts()
+// Recalculates vertices that make up triangles to create the text
+void TapToPlayText::recalcVerts()
 {
 	// Recalc only if dirty
 	if (!dirty)
@@ -84,13 +84,13 @@ void TitleText::recalcVerts()
 	dirty = false;
 }
 
-// Updates Title Text status (such as position)
-void TitleText::update()
+// Updates Text status (such as position)
+void TapToPlayText::update()
 {
-	// Update title text position
+	// Update text position
 	updatePos();
 
-	// Update title text color
+	// Update text color
 	updateColor();
 
 	// Recalculate verts if needed
@@ -98,23 +98,21 @@ void TitleText::update()
 		recalcVerts();
 }
 
-// Moves title text toward destination position
-void TitleText::updatePos()
+// Moves text toward destination position
+void TapToPlayText::updatePos()
 {
 	
 }
 
-// Animates the title text's color
-void TitleText::updateColor()
+// Animates the text's color
+void TapToPlayText::updateColor()
 {
-	return; // disabled for now
-
 	if (colorDir)
 		colorStep += 0.005f;
 	else
 		colorStep -= 0.005f;
 
-	if (colorStep > 0.2f) { colorStep = 0.2f; colorDir = !colorDir; }
+	if (colorStep > 0.3f) { colorStep = 0.3f; colorDir = !colorDir; }
 	else if (colorStep < 0.0f) { colorStep = 0.0f; colorDir = !colorDir; }
 
 	for (int i = 0; i < vertCount; ++i)
@@ -126,8 +124,8 @@ void TitleText::updateColor()
 	}
 }
 
-// Loads texture for the title text from .apk
-void TitleText::loadTexture()
+// Loads texture for the text from .apk
+void TapToPlayText::loadTexture()
 {
 	// Don't load again if already loaded
 	if (texture)
@@ -135,7 +133,7 @@ void TitleText::loadTexture()
 
 	// Load texture from file
 	int width, height;
-	texture = loadTextureFromPNG("assets/title.png", width, height);
+	texture = loadTextureFromPNG("assets/tap_screen_to_play.png", width, height);
 
 	// Set up texture coords
 	texCoords[0] = 1.0f;	texCoords[1] = 0.0f;

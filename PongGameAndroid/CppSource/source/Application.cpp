@@ -8,6 +8,7 @@
 //#include <math.h>
 
 #include "TitleText.h"
+#include "TapToPlayText.h"
 #include "Player.h"
 #include "TheBall.h"
 #include "Renderer.h"
@@ -24,7 +25,8 @@ zip* APKArchive;
 // Constructor
 Application::Application(int width, int height, const char* apkPath)
 	: player(new Player[2]), renderer(new Renderer(width, height)), inputManager(new InputManager()),
-	timer(new Timer()), theBall(new TheBall()), titleText(new TitleText()), showTitle(true)
+	timer(new Timer()), theBall(new TheBall()), titleText(new TitleText()), showTitle(true),
+	tapToPlayText(new TapToPlayText())
 {
 	loadAPK(apkPath);
 
@@ -50,6 +52,7 @@ Application::Application(int width, int height, const char* apkPath)
 	gameObjects[1] = &player[1];
 	gameObjects[2] = theBall;
 	gameObjects[3] = titleText;
+	gameObjects[4] = tapToPlayText;
 
 	scoreTokenP1 = new ScoreToken[10];
 	scoreTokenP2 = new ScoreToken[10];
@@ -65,8 +68,8 @@ Application::Application(int width, int height, const char* apkPath)
 		scoreTokenP2[i].setVisible(false);
 
 		// Set up game object pointers
-		gameObjects[4 + i] = &scoreTokenP1[i];
-		gameObjects[14 + i] = &scoreTokenP2[i];
+		gameObjects[5 + i] = &scoreTokenP1[i];
+		gameObjects[15 + i] = &scoreTokenP2[i];
 	}
 
 	loadTextures();
@@ -120,11 +123,13 @@ void Application::renderFrame()
 	{
 		titleText->update();
 		titleText->draw();
+		tapToPlayText->update();
+		tapToPlayText->draw();
 	}
 	else
 	{
 		// Draw all game objects
-		for (int i = 23; i >= 0; --i)
+		for (int i = 24; i >= 0; --i)
 		{
 			gameObjects[i]->update();
 			gameObjects[i]->draw();
@@ -180,7 +185,7 @@ void Application::score(const int playerId)
 
 void Application::loadTextures()
 {
-	for (int i = 0; i < 24; ++i)
+	for (int i = 0; i < 25; ++i)
 		gameObjects[i]->loadTexture();
 }
 
@@ -201,12 +206,14 @@ void Application::gameOver(const int winnerPlayerId)
 
 	showTitle = true;
 	titleText->setVisible(true);
+	tapToPlayText->setVisible(true);
 }
 
 void Application::startGame()
 {
 	showTitle = false;
 	titleText->setVisible(false);
+	tapToPlayText->setVisible(false);
 }
 
 bool Application::playing() const

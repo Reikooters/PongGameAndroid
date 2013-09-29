@@ -230,6 +230,7 @@
     <ClCompile Include="CppSource\source\Player.cpp" />
     <ClCompile Include="CppSource\source\Renderer.cpp" />
     <ClCompile Include="CppSource\source\ScoreToken.cpp" />
+    <ClCompile Include="CppSource\source\TapToPlayText.cpp" />
     <ClCompile Include="CppSource\source\TheBall.cpp" />
     <ClCompile Include="CppSource\source\Timer.cpp" />
     <ClCompile Include="CppSource\source\TitleText.cpp" />
@@ -261,6 +262,7 @@
     <ClInclude Include="CppSource\header\Player.h" />
     <ClInclude Include="CppSource\header\Renderer.h" />
     <ClInclude Include="CppSource\header\ScoreToken.h" />
+    <ClInclude Include="CppSource\header\TapToPlayText.h" />
     <ClInclude Include="CppSource\header\TheBall.h" />
     <ClInclude Include="CppSource\header\Timer.h" />
     <ClInclude Include="CppSource\header\TitleText.h" />

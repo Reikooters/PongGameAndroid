@@ -562,6 +562,9 @@
     <ClCompile Include="CppSource\Dependencies\zlib\crc32.c">
       <Filter>PNG Loader\zlib</Filter>
     </ClCompile>
+    <ClCompile Include="CppSource\source\TapToPlayText.cpp">
+      <Filter>CppSource\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppSource\header\Application.h">
@@ -653,6 +656,9 @@
     </ClInclude>
     <ClInclude Include="CppSource\Dependencies\zlib\crc32.h">
       <Filter>PNG Loader\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSource\header\TapToPlayText.h">
+      <Filter>CppSource\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

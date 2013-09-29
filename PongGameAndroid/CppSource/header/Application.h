@@ -1,6 +1,7 @@
 #pragma once
 
 class TitleText;
+class TapToPlayText;
 class Player;
 class Renderer;
 class InputManager;
@@ -13,6 +14,7 @@ class Application
 {
 	bool showTitle;
 	TitleText* titleText;
+	TapToPlayText* tapToPlayText;
 	Player* player;
 	TheBall* theBall;
 	Renderer* renderer;
