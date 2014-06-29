@@ -178,7 +178,7 @@ void Application::score(const int playerId)
 	scores[playerId] += 1;
 	theBall->reset();
 
-	if (scores[playerId] <= 10)
+	if (scores[playerId] <= 4)
 	{
 		if (playerId == 0)
 			scoreTokenP1[ scores[playerId] - 1 ].setVisible(true);
